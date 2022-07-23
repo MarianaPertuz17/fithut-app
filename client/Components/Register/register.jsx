@@ -5,9 +5,7 @@ import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
 
-export default function Login({ navigation }) {
-
-
+export default function Register({ navigation }) {
   let [fontsLoaded] = useFonts({
     'Epilogue-Bold': require('../../assets/fonts/Epilogue-Bold.ttf'),
     'Epilogue-Light': require('../../assets/fonts/Epilogue-Regular.ttf'),
@@ -23,7 +21,14 @@ export default function Login({ navigation }) {
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
 
         <View style={styles.infoContainer}>
-          <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 40, color: 'white', marginBottom:'15%'}}>LOGIN</Text>
+          <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 35, color: 'white', marginBottom:'5%'}}>REGISTER</Text>
+          <TextInput
+            id="displayName"
+            name="displayName"
+            placeholder='Username'
+            style={styles.textInput}
+          ></TextInput>
+
           <TextInput
             id="displayName"
             name="displayName"
@@ -38,19 +43,26 @@ export default function Login({ navigation }) {
             style={styles.textInput}
           ></TextInput>
 
-          <Pressable onPress={() => navigation.navigate('Login')} style={{ width:'50%', alignSelf:'flex-end'}}>
+          <TextInput
+            id="displayName"
+            name="displayName"
+            placeholder='Repeat password'
+            style={styles.textInput}
+          ></TextInput>
+
+          <Pressable style={{ width:'50%', alignSelf:'flex-end'}}>
             <Text style={styles.signUpPurpleText}>Forgot your password?</Text>
           </Pressable>
 
-          <Pressable style={styles.button} onPress={() => navigation.navigate('Main')}>
-              <Text style={styles.text}>LOGIN</Text>
+          <Pressable style={styles.button}>
+              <Text style={styles.text}>SIGN UP</Text>
           </Pressable>
 
           <View style={{ flexDirection:'row', justifyContent:'center' }} >
-              <Text style={styles.signUpText}>Don't have an account yet? </Text>
+              <Text style={styles.signUpText}>Already have an account? </Text>
 
-              <Pressable onPress={() => navigation.navigate('Register')}>
-                <Text style={styles.signUpPurpleText}>SIGN UP HERE</Text>
+              <Pressable onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.signUpPurpleText}>LOGIN HERE</Text>
               </Pressable>
              
             </View>
@@ -60,7 +72,7 @@ export default function Login({ navigation }) {
         
       </ImageBackground>
       
-      <StatusBar style="light" />
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -86,9 +98,12 @@ const styles = StyleSheet.create({
     borderWidth: 1.3,
     width:'100%',
     opacity: 0.4,
-    marginBottom: '10%',
+    marginBottom: '5%',
+    marginTop: '5%',
     color: 'lightgray'
   },
+
+
 
   infoContainer: {
     padding:40,

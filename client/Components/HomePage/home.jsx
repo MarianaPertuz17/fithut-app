@@ -7,8 +7,6 @@ import fingerprint from '../../assets/images/purple_fingerprint.png';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 export default function HomePage({ navigation }) {
 
@@ -35,7 +33,7 @@ export default function HomePage({ navigation }) {
           <Text style={styles.welcomeMessage}>Welcome to the hut of health and life quality. Have access to workouts that work out.</Text>
           
 
-            <Pressable style={styles.button}>
+            <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
               <Text style={styles.text}>LOGIN WITH ACCOUNT</Text>
             </Pressable>
 
@@ -51,7 +49,7 @@ export default function HomePage({ navigation }) {
             <View style={{ flexDirection:'row', justifyContent:'center' }}>
               <Text style={styles.signUpText}>Don't have an account yet? </Text>
 
-              <Pressable onPress={() => navigation.navigate('Login')}>
+              <Pressable onPress={() => navigation.navigate('Register')}>
                 <Text style={styles.signUpPurpleText}>SIGN UP HERE</Text>
               </Pressable>
              
@@ -63,7 +61,7 @@ export default function HomePage({ navigation }) {
         
       </ImageBackground>
       
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
     </View>
   );
 }
