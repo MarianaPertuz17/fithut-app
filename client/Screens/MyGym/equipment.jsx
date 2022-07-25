@@ -152,7 +152,6 @@ export default function MyGym ({navigation, user, updateEquipment}) {
   }
 
 
-  console.log(tabsState.find(tab => tab.selected === true))
   return (
     <View style={{ flex: 1, backgroundColor:'black' }}>
       <Pressable style = {styles.saveButton} onPress={() => updateEquipment('62de1ccafceacff8700e6722',availableEquipment)} >
@@ -187,7 +186,7 @@ const styles = StyleSheet.create({
   }
 })
 
-console.log(tabs, 'tabs here mfer')
+
   
 
  // "body weight" siempre debe estar

@@ -1,47 +1,56 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image } from 'react-native';
-import upperBod from '../../assets/images/biceps-icon.png';
-import lowerBod from '../../assets/images/leg-icon.png';
-import coreBod from '../../assets/images/core-icon.png';
-import roulette from '../../assets/images/roulette-icon.png';
-import backArrow from '../../assets/images/back-arrow.png';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { useState } from 'react';
+import { BodyList } from '../../Components/BodyList';
 
+const bodyParts = [
+  {
+    name: 'Upper Body',
+    icon: require('../../assets/images/biceps-icon.png'),
+    selected: false
+  },
+  {
+    name: 'Lower Body',
+    icon: require('../../assets/images/leg-icon.png'),
+    selected: false
+  },
+  {
+    name: 'Core',
+    icon: require('../../assets/images/core-icon.png'),
+    selected: false
+  },
+  {
+    name: 'Randomize',
+    icon: require('../../assets/images/roulette-icon.png'),
+    selected: false
+  }
+];
 
 export default function Routine ({navigation}) {
 
-  const [selectedExercise, setSelectedExercise] = useState('');
+  const [ bodyPartOptions, setBodyPartOptions ] = useState(bodyParts);
 
-  const handleSelect = (selected) => {
-
+  const onTap = (bodyPartName) => {
+    setBodyPartOptions(prevBP => {
+      return prevBP.map(ele => {
+        if (ele.name === bodyPartName) {
+          console.log(ele, 'aja')
+          ele.selected = !ele.selected;
+        } else {
+          ele.selected = false;
+          console.log('aca estoy', ele)
+        }
+        return ele;
+      })
+    })
   };
-  
+
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
       
-      <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'8%',marginTop:'25%', marginBottom:'15%'}}>Today's routine</Text>
+      <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'5%',marginTop:'25%', marginBottom:'15%'}}>Today's routine</Text>
 
       <View style= {styles.iconsContainer}>
-        <View style={{display:'flex', flexDirection:'row', justifyContent:'space-between', width:'85%', marginBottom:'5%', height:'45%'}}>
-          <View style={styles.exerciseContainer}>
-            <Text style={styles.exerciseName}>Upper Body</Text>
-            <Image style={styles.icon} source={upperBod}/>
-          </View>
-          <View style={styles.exerciseContainer}>
-            <Text style={styles.exerciseName}>Lower Body</Text>
-            <Image style={styles.icon} source={lowerBod}/>
-          </View>
-        </View>
-
-        <View style={{display:'flex', flexDirection:'row', justifyContent:'space-between', width:'85%', height:'45%'}}>
-          <View style={styles.exerciseContainer}>
-            <Text style={styles.exerciseName}>Core</Text>
-            <Image style={styles.icon} source={coreBod}/>
-          </View>
-          <View style={styles.exerciseContainer}>
-            <Text style={styles.exerciseName}>Randomize</Text>
-            <Image style={styles.icon} source={roulette}/>
-          </View>
-        </View>
+        {bodyParts.map(bodyPart => <BodyList bodyPart={bodyPart} onTap={onTap}/>)}
       </View>
       
 
@@ -57,8 +66,12 @@ const styles = StyleSheet.create({
 
   iconsContainer: {
     height:'40%',
-    alignItems:'center',
-    justifySelf:'center'
+    flexWrap: 'wrap', 
+    flexDirection: 'row', 
+    justifyContent:'space-between', 
+    paddingLeft:'5%', 
+    paddingRight:'5%',
+    alignItems:'center'
   },
 
   exerciseContainer: {

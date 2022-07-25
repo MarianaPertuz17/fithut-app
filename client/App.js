@@ -26,10 +26,7 @@ export default function App() {
   }, []);
 
   const updateEquipment = async (id, equipment) => {
-    console.log('im in')
-    const {res, error} = await userService.putEquipment(id, equipment);
-    console.log(res,'im out')
-    
+    const {res, error} = await userService.putEquipment(id, equipment);    
   }
 
 
