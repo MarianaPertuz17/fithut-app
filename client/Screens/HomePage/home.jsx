@@ -12,7 +12,8 @@ export default function HomePage({ navigation }) {
 
   let [fontsLoaded] = useFonts({
     'Epilogue-Bold': require('../../assets/fonts/Epilogue-Bold.ttf'),
-    'Epilogue-Light': require('../../assets/fonts/Epilogue-Regular.ttf'),
+    'Epilogue-Regular': require('../../assets/fonts/Epilogue-Regular.ttf'),
+    'Epilogue-SemiBold': require('../../assets/fonts/Epilogue-SemiBold.ttf'),
     'Nunito-Regular': require('../../assets/fonts/Nunito-Regular.ttf'),
   });
 
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
   },
 
   welcomeMessage: {
-    fontFamily: 'Epilogue-Light', 
+    fontFamily: 'Epilogue-Regular', 
     fontSize: 15, 
     color:'gray',
     marginTop: 30,

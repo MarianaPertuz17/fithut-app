@@ -3,13 +3,15 @@ import myGym from '../assets/images/mygym-icon.png';
 import myGymNoColor from '../assets/images/mygym-icon-nocolor.png';
 import clock from '../assets/images/clock.png';
 import clockNoColor from '../assets/images/clock-nocolor.png';
-import MyGym from '../Components/MyGym/myGym'
-import Routine from '../Components/Routine/routine';
+import MyGym from '../Screens/MyGym/equipment'
+import Routine from '../Screens/Routine/routine';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-export const TabNavigator = () => {
+export const TabNavigator = ({user, updateEquipment}) => {
+
+  console.log(updateEquipment, 'la supuesta func')
   return(
     <Tab.Navigator 
       initialRouteName='MyGym'     
@@ -33,7 +35,7 @@ export const TabNavigator = () => {
           } 
         return <Image style={styles.tabIconStyle} source={iconName}/>;
      },})}>
-      <Tab.Screen name="MyGym" component={MyGym} options={{ tabBarLabel: 'My Gym' }}/>
+      <Tab.Screen name="MyGym">{(props) => <MyGym {...props} updateEquipment={updateEquipment}/>}</Tab.Screen>
       <Tab.Screen name="Routine" component={Routine} options={{ tabBarLabel: 'Routine' }}/>
   </Tab.Navigator >
   )

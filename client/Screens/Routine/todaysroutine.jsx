@@ -6,7 +6,9 @@ import roulette from '../../assets/images/roulette-icon.png';
 import backArrow from '../../assets/images/back-arrow.png';
 
 
-export default function TodaysRoutine ({navigation}) {
+export default function TodaysRoutine ({navigation, updateEquipment}) {
+
+  
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
 
