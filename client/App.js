@@ -35,18 +35,12 @@ export default function App() {
   const findExercises = async (bodyPart, equipment) => {
     const {res, error} = await userService.getExercises(bodyPart, equipment);
     if (!error) {
-      //const myFilter = res.filter(exercise => exercise.equipment === equipment)
-      // console.log(res.map(exe => {equipment.includes(exe.equipment) && exe}), 'el');
-      // for (let exercise of res){
-      //   for (let equip of equipment){
-      //     if (exercise.equipment === equip) //hago el push 
-      //   }
-      // }
+      const array = res.map(exe => exe).filter(ele => ele.equipment === 'body weight' || equipment.includes(ele.equipment));
+      // Shuffle array
+      const shuffled = array.sort(() => 0.5 - Math.random());
+      let selected = shuffled.slice(0, 12);
 
-      setExerciseList(res.map(exe => exe).filter(ele => ele.equipment === 'body weight' || equipment.includes(ele.equipment)));
-
-      //opcion 1 res.map(exe =>{if (equipment.includes(exe.equipment) || exe.equipment === 'body weight') return exe})
-      //opcion 2 no funcion res.filter(exercise => equipment.map(equi => exercise.equipment === equi))
+      setExerciseList(selected);
     }
   }
 
