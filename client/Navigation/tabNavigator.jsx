@@ -9,7 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-export const TabNavigator = ({user, updateEquipment}) => {
+export const TabNavigator = ({user, updateEquipment, findExercises, userEquipment}) => {
 
   console.log(updateEquipment, 'la supuesta func')
   return(
@@ -36,7 +36,7 @@ export const TabNavigator = ({user, updateEquipment}) => {
         return <Image style={styles.tabIconStyle} source={iconName}/>;
      },})}>
       <Tab.Screen name="MyGym">{(props) => <MyGym {...props} updateEquipment={updateEquipment}/>}</Tab.Screen>
-      <Tab.Screen name="Routine" component={Routine} options={{ tabBarLabel: 'Routine' }}/>
+      <Tab.Screen name="Routine">{(props) => <Routine {...props} findExercises={findExercises} userEquipment={userEquipment}/>}</Tab.Screen>
   </Tab.Navigator >
   )
 }

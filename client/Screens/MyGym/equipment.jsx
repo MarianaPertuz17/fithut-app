@@ -1,9 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image, TextInput, ScrollView } from 'react-native';
-import image from '../../assets/images/3d_wallpaper.png';
+import { StyleSheet, Text, View, Pressable} from 'react-native';
 import { EquipmentList } from '../../Components/EquipmentList';
 import { TabSelector } from '../../Components/TabSelector';
+
 const freeWeights = [
   {
     "equipment": "dumbbell",

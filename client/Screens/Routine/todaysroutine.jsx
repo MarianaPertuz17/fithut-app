@@ -6,18 +6,20 @@ import roulette from '../../assets/images/roulette-icon.png';
 import backArrow from '../../assets/images/back-arrow.png';
 
 
-export default function TodaysRoutine ({navigation, updateEquipment}) {
+export default function TodaysRoutine ({navigation, updateEquipment, findExercises, exerciseList}) {
 
-  
+ console.log(exerciseList, 'la lista con cambios')
+
+ const { name, target, gifUrl, bodyTarget, equipment} = exerciseList;
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
 
       <Pressable onPress={() => navigation.navigate('Routine')}>
-      <Image source={backArrow} style={styles.backIcon}/>
+        <Image source={backArrow} style={styles.backIcon}/>
       </Pressable>
+
       
-      
-      <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'8%',marginTop:'25%', marginBottom:'15%'}}>Upper body</Text>
+      <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'8%',marginTop:'25%', marginBottom:'15%'}}>{bodyTarget}</Text>
 
       <View style= {styles.iconsContainer}>
         <View style={{display:'flex', flexDirection:'row', justifyContent:'space-between', width:'85%', marginBottom:'5%', height:'45%'}}>

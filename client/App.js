@@ -14,6 +14,8 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   const [ userInfo, setUserInfo ] = useState([]);
+  const [ exerciseList, setExerciseList ] = useState([]);
+  const [ userEquipment, setUserEquipment ] = useState([]);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -26,7 +28,26 @@ export default function App() {
   }, []);
 
   const updateEquipment = async (id, equipment) => {
-    const {res, error} = await userService.putEquipment(id, equipment);    
+    const {res, error} = await userService.putEquipment(id, equipment);
+    if (!error) setUserEquipment(res);
+  }
+
+  const findExercises = async (bodyPart, equipment) => {
+    const {res, error} = await userService.getExercises(bodyPart, equipment);
+    if (!error) {
+      //const myFilter = res.filter(exercise => exercise.equipment === equipment)
+      // console.log(res.map(exe => {equipment.includes(exe.equipment) && exe}), 'el');
+      // for (let exercise of res){
+      //   for (let equip of equipment){
+      //     if (exercise.equipment === equip) //hago el push 
+      //   }
+      // }
+
+      setExerciseList(res.map(exe => exe).filter(ele => ele.equipment === 'body weight' || equipment.includes(ele.equipment)));
+
+      //opcion 1 res.map(exe =>{if (equipment.includes(exe.equipment) || exe.equipment === 'body weight') return exe})
+      //opcion 2 no funcion res.filter(exercise => equipment.map(equi => exercise.equipment === equi))
+    }
   }
 
 
@@ -36,8 +57,8 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="TodaysRoutine" component={TodaysRoutine} updateEquipment={updateEquipment}/>
-        <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} updateEquipment={updateEquipment}/>}</Stack.Screen>
+        <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList}/>}</Stack.Screen>
+        <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment}/>}</Stack.Screen>
       </Stack.Navigator>
 
     </NavigationContainer>

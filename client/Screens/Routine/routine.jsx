@@ -25,24 +25,32 @@ const bodyParts = [
   }
 ];
 
-export default function Routine ({navigation}) {
+export default function Routine ({navigation, findExercises, userEquipment}) {
+
 
   const [ bodyPartOptions, setBodyPartOptions ] = useState(bodyParts);
+  // const [ selectedBodyPart, setSelectedBodyPart ] = useState({});
+  //console.log(findExercises, 'func findexercises')
 
   const onTap = (bodyPartName) => {
     setBodyPartOptions(prevBP => {
       return prevBP.map(ele => {
         if (ele.name === bodyPartName) {
-          console.log(ele, 'aja')
-          ele.selected = !ele.selected;
+          ele.selected = true;
         } else {
           ele.selected = false;
-          console.log('aca estoy', ele)
         }
         return ele;
       })
     })
   };
+
+  const handleStartWorkout = () => {
+
+    findExercises((bodyPartOptions.find(part => part.selected === true)).name, userEquipment.map(equi => equi.equipment));
+    navigation.navigate('TodaysRoutine');
+  }
+
 
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
@@ -50,11 +58,11 @@ export default function Routine ({navigation}) {
       <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'5%',marginTop:'25%', marginBottom:'15%'}}>Today's routine</Text>
 
       <View style= {styles.iconsContainer}>
-        {bodyParts.map(bodyPart => <BodyList bodyPart={bodyPart} onTap={onTap}/>)}
+        {bodyParts.map((bodyPart, index) => <BodyList key={index} bodyPart={bodyPart} onTap={onTap}/>)}
       </View>
       
 
-      <Pressable style={styles.button} onPress={() => navigation.navigate('TodaysRoutine')}>
+      <Pressable style={styles.button} onPress={handleStartWorkout}>
         <Text style={styles.text}>START WORKOUT</Text>
       </Pressable>
       
