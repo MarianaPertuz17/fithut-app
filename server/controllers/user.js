@@ -1,5 +1,6 @@
 const User = require('../models/user');
 
+
 exports.getUser = async (req, res) => {
   try {
     const response = await User.find(); //hay que cambiar por findById
@@ -25,7 +26,7 @@ exports.putEquipment = async (req, res) => {
   try {
     const { equipment } = req.body;
     const updatedUser = await User.findOneAndUpdate({id : req.params.id}, {$set: {equipment: equipment}})
-    res.status(201).send({res: updatedUser , error: false});
+    res.status(201).send({res: equipment , error: false});
   } catch (e) {
     res.status(500).send({res: 'Cound not update equipment for user', error: true});
   }
