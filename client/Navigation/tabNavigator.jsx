@@ -35,7 +35,7 @@ export const TabNavigator = ({user, updateEquipment, findExercises, userEquipmen
           } 
         return <Image style={styles.tabIconStyle} source={iconName}/>;
      },})}>
-      <Tab.Screen name="MyGym">{(props) => <MyGym {...props} updateEquipment={updateEquipment}/>}</Tab.Screen>
+      <Tab.Screen name="MyGym">{(props) => <MyGym {...props} user={user} updateEquipment={updateEquipment}/>}</Tab.Screen>
       <Tab.Screen name="Routine">{(props) => <Routine {...props} findExercises={findExercises} userEquipment={userEquipment}/>}</Tab.Screen>
   </Tab.Navigator >
   )

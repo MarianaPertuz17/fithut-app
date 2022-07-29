@@ -1,54 +1,29 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image } from 'react-native';
-import upperBod from '../../assets/images/biceps-icon.png';
-import lowerBod from '../../assets/images/leg-icon.png';
-import coreBod from '../../assets/images/core-icon.png';
-import roulette from '../../assets/images/roulette-icon.png';
+import { ImageBackground, StyleSheet, Text, View, Pressable, Image, Alert } from 'react-native';
 import backArrow from '../../assets/images/back-arrow.png';
-
+import { ExerciseList } from '../../Components/ExerciseList';
 
 export default function TodaysRoutine ({navigation, updateEquipment, findExercises, exerciseList}) {
 
- console.log(exerciseList, 'la lista con cambios')
 
- const { name, target, gifUrl, bodyTarget, equipment} = exerciseList;
+ const handleBack = () => {
+  Alert.alert('', `You are not done with the exercises yet. Are you sure you want to finish this workout?`, [
+    {
+      text: 'NO',
+    },
+    { text: 'YES', onPress: () => navigation.navigate('Routine') },
+  ]);
+ }
+
+ 
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
 
-      <Pressable onPress={() => navigation.navigate('Routine')}>
+      <Pressable onPress={handleBack}>
         <Image source={backArrow} style={styles.backIcon}/>
       </Pressable>
 
-      
-      <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'8%',marginTop:'25%', marginBottom:'15%'}}>{bodyTarget}</Text>
+      <ExerciseList exerciseList={exerciseList} navigation={navigation}/>
 
-      <View style= {styles.iconsContainer}>
-        <View style={{display:'flex', flexDirection:'row', justifyContent:'space-between', width:'85%', marginBottom:'5%', height:'45%'}}>
-          <Pressable style={styles.exerciseContainer} onPress={() => navigation.navigate('TodaysRoutine')}>
-            <Text style={styles.exerciseName}>Upper Body</Text>
-            <Image style={styles.icon} source={upperBod}/>
-          </Pressable>
-          <Pressable style={styles.exerciseContainer} onPress={() => navigation.navigate('TodaysRoutine')}>
-            <Text style={styles.exerciseName}>Lower Body</Text>
-            <Image style={styles.icon} source={lowerBod}/>
-          </Pressable>
-        </View>
-
-        <View style={{display:'flex', flexDirection:'row', justifyContent:'space-between', width:'85%', height:'45%'}}>
-          <Pressable style={styles.exerciseContainer} onPress={() => navigation.navigate('TodaysRoutine')}>
-            <Text style={styles.exerciseName}>Core</Text>
-            <Image style={styles.icon} source={coreBod}/>
-          </Pressable>
-          <Pressable style={styles.exerciseContainer} onPress={() => navigation.navigate('TodaysRoutine')}>
-            <Text style={styles.exerciseName}>Randomize</Text>
-            <Image style={styles.icon} source={roulette}/>
-          </Pressable>
-        </View>
-      </View>
-      
-
-      <Pressable style={styles.button} onPress={() => navigation.navigate('Routine')}>
-        <Text style={styles.text}>START WORKOUT</Text>
-      </Pressable>
       
     </View>
   )

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { BodyList } from '../../Components/BodyList';
 
@@ -29,8 +29,7 @@ export default function Routine ({navigation, findExercises, userEquipment}) {
 
 
   const [ bodyPartOptions, setBodyPartOptions ] = useState(bodyParts);
-  // const [ selectedBodyPart, setSelectedBodyPart ] = useState({});
-  //console.log(findExercises, 'func findexercises')
+
 
   const onTap = (bodyPartName) => {
     setBodyPartOptions(prevBP => {

@@ -127,6 +127,8 @@ export default function MyGym ({navigation, user, updateEquipment}) {
   const [availableEquipment, setAvailableEquipment] = useState([]);
   const [tabsState, setTabsState] = useState(tabs)
 
+  //console.log(user, 'el usuario')
+
   const handleTapItem = (ele) => {
     if (!ele.added) {
       ele.added = !ele.added;

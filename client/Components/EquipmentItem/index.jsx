@@ -1,7 +1,7 @@
 import { Text, Pressable } from 'react-native';
 import { styles } from './styles';
 
-export function EquipmentItem ({ listItem, onTapItem, itemWrapperStyles}) {
+export function EquipmentItem ({ listItem, onTapItem}) {
   const { equipment, added } = listItem;
   return (
     <Pressable style={{...styles.equipmentContainer, backgroundColor: added ? '#AEEEE0': '#171724'}} onPress={() => onTapItem(listItem)}>

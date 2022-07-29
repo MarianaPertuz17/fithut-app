@@ -7,6 +7,7 @@ import Register from './Screens/Register/register'
 import TodaysRoutine from './Screens/Routine/todaysroutine';
 import { TabNavigator } from './Navigation/tabNavigator';
 import { userService } from './Services/userService';
+import { ExerciseInfo } from './Screens/Routine/exerciseInfo';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,8 +52,9 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="ExerciseInfo" component={ExerciseInfo} />
         <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList}/>}</Stack.Screen>
-        <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment}/>}</Stack.Screen>
+        <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment}/>}</Stack.Screen>
       </Stack.Navigator>
 
     </NavigationContainer>
