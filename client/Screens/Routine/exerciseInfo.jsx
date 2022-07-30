@@ -1,11 +1,29 @@
-import { Text, View, Image, Pressable, StyleSheet} from 'react-native';
+import { useState } from 'react';
+import { Text, View, Image, Pressable, StyleSheet, Alert, Animated } from 'react-native';
+import backArrow from '../../assets/images/back-arrow.png';
+import { Repetition } from '../../Components/Repetition';
 
 
 export function ExerciseInfo ({navigation, route}) {
-  const { setNumber, reps, name, target, gifUrl, bodyTarget, equipment } = route.params;
+  const { setNumber, reps, formattedName, target, gifUrl, bodyTarget, equipment } = route.params;
+  const [ counter, setCounter ] = useState(-1);
+  const [ isFilled, setIsFilled ] = useState(false);
 
+  const logSetClicked = () => {
+    setCounter(prevCounter => prevCounter + 1);
+  }
+
+  const handleBack = () => {
+    Alert.alert('', `You are not done with the exercises yet. Are you sure you want to finish this workout?`, [
+      {
+        text: 'NO',
+      },
+      { text: 'YES', onPress: () => navigation.navigate('Routine') },
+    ]);
+   }
+  
   return(
-    <View style={styles.exerciseContainer}>
+    <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
         {/* <Image source={{
           uri: gifUrl,
           method: 'GET',
@@ -14,13 +32,37 @@ export function ExerciseInfo ({navigation, route}) {
             'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
           },
         }} style={{width:300, height:300}}/> */}
-        <Image style={{width:300, height:300}} source={require('./homer.gif')}/>
-        <Text>{setNumber} y {reps}</Text>
-        <Image source={gifUrl} style={{backgroundColor:'red'}}/>
-        <Pressable onPress={() => navigation.navigate('ExerciseInfo')} style={styles.button}>
-          <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Log set</Text>
-        </Pressable>
+        <View style={styles.headerContainer}>
+          <Pressable onPress={handleBack}>
+            <Image source={backArrow} style={styles.backIcon}/>
+          </Pressable>
+          <Text style={styles.exerciseName}>{formattedName}</Text>
+        </View>
+        
+        <Image style={{width:300, height:300, flexDirection: 'column', alignSelf:'center'}} source={require('./homer.gif')}/>
+        <Text style={styles.spanText}>{setNumber} SETS</Text>
+        
+        {[...Array(setNumber)].map((ele, index) => {
+        return (
+          <View>
+            <Repetition reps={reps} counter={counter} key={index} index={index} setNumber={setNumber}/>
+          </View>
+          
+        )})}
 
+        {counter < setNumber-1 ? (
+          <Pressable onPress={logSetClicked} style={styles.button}>
+            <Text style={{ fontWeight:'bold', color:'gray', fontSize:20, fontStyle:'italic'}}>Log set</Text>
+          </Pressable>
+        ):
+        (
+          <Pressable onPress={logSetClicked} style={styles.buttonFinish}>
+            <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Done</Text>
+          </Pressable>
+        )
+        
+        }
+        
  
     </View>
   )
@@ -28,16 +70,77 @@ export function ExerciseInfo ({navigation, route}) {
 
 const styles = StyleSheet.create({
 
+  headerContainer: {
+    flexDirection:'row', 
+    alignItems:'center', 
+    marginTop:50, 
+    marginBottom:30
+  },
+
   button: {
+    alignItems: 'center',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    paddingVertical: 8,
+    backgroundColor: 'white',
+    borderColor: 'transparent',
+    borderRadius: 50,
+    borderWidth: 1.3,
+    width:'50%',
+    marginTop:'10%',
+  },
+
+  buttonFinish: {
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
     paddingVertical: 8,
     backgroundColor: '#10ECE4',
     borderColor: 'transparent',
-    borderRadius:50,
+    borderRadius: 50,
     borderWidth: 1.3,
     width:'50%',
     marginTop:'10%',
-  }
+  },
+
+  iconsContainer: {
+    height:'40%',
+    flexWrap: 'wrap', 
+    flexDirection: 'row', 
+    justifyContent:'space-between', 
+    paddingLeft:'5%', 
+    paddingRight:'5%',
+    alignItems:'center'
+  },
+
+  backIcon: {
+    width: 35,
+    height: 35,
+    marginLeft: 20
+  },
+
+  exerciseName: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
+    maxWidth:300,
+    marginLeft: 20
+  },
+
+  spanText: {
+    color: 'white',
+    fontSize: 17,
+    fontWeight:'bold',
+    flexDirection: 'column',
+    alignSelf:'center',
+    marginTop:25,
+    marginBottom:20
+    },
+
+  progressBar: {
+    width: '10%',
+    backgroundColor: '#AEEEE0',
+    flexDirection:"column"
+  },
+
 });

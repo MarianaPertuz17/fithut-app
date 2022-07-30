@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 17,
-    maxWidth:300,
+    maxWidth:255,  
   },
 
   spanContainer: {
