@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { Text, View, Image, Pressable, StyleSheet, Alert, Animated } from 'react-native';
+import { Text, View, Image, Pressable, StyleSheet, Alert, ScrollView } from 'react-native';
 import backArrow from '../../assets/images/back-arrow.png';
+import { Instructions } from '../../Components/Instructions';
 import { Repetition } from '../../Components/Repetition';
 
 
 export function ExerciseInfo ({navigation, route}) {
   const { setNumber, reps, formattedName, target, gifUrl, bodyTarget, equipment } = route.params;
   const [ counter, setCounter ] = useState(-1);
-  const [ isFilled, setIsFilled ] = useState(false);
 
   const logSetClicked = () => {
     setCounter(prevCounter => prevCounter + 1);
@@ -32,6 +32,9 @@ export function ExerciseInfo ({navigation, route}) {
             'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
           },
         }} style={{width:300, height:300}}/> */}
+      <ScrollView>
+
+      
         <View style={styles.headerContainer}>
           <Pressable onPress={handleBack}>
             <Image source={backArrow} style={styles.backIcon}/>
@@ -50,9 +53,12 @@ export function ExerciseInfo ({navigation, route}) {
           
         )})}
 
+        <Instructions target={target} equipment={equipment} />
+      
+      </ScrollView>
         {counter < setNumber-1 ? (
           <Pressable onPress={logSetClicked} style={styles.button}>
-            <Text style={{ fontWeight:'bold', color:'gray', fontSize:20, fontStyle:'italic'}}>Log set</Text>
+            <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Log set</Text>
           </Pressable>
         ):
         (
@@ -81,26 +87,34 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
-    backgroundColor: 'white',
+    backgroundColor: '#9A9CE9',
     borderColor: 'transparent',
-    borderRadius: 50,
+    borderRadius: 10,
     borderWidth: 1.3,
-    width:'50%',
+    width:140,
+    height:25,
     marginTop:'10%',
+    position:'absolute',
+    bottom:10,
+    right:'4%',
+    alignSelf:'flex-end'
   },
 
   buttonFinish: {
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    paddingVertical: 8,
-    backgroundColor: '#10ECE4',
+    backgroundColor: '#9A9CE9',
     borderColor: 'transparent',
-    borderRadius: 50,
+    borderRadius: 10,
     borderWidth: 1.3,
-    width:'50%',
+    width:140,
+    height:25,
     marginTop:'10%',
+    position:'absolute',
+    bottom:10,
+    right:'4%',
+    alignSelf:'flex-end'
   },
 
   iconsContainer: {
