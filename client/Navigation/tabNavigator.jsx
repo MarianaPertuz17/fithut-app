@@ -1,13 +1,13 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image, TextInput } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import myGym from '../assets/images/mygym-icon.png';
 import myGymNoColor from '../assets/images/mygym-icon-nocolor.png';
 import clock from '../assets/images/clock.png';
 import clockNoColor from '../assets/images/clock-nocolor.png';
-import profile from '../assets/images/profile.png';
-import profileNoColor from '../assets/images/profile-nocolor.png';
+import calendar from '../assets/images/calendar.png';
+import calendarNoColor from '../assets/images/calendar-nocolor.png';
 import MyGym from '../Screens/MyGym/equipment'
 import Routine from '../Screens/Routine/routine';
-import Profile from '../Screens/Profile/profile';
+import History from '../Screens/History/history';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
@@ -38,16 +38,16 @@ export const TabNavigator = ({user, updateEquipment, findExercises, userEquipmen
             : clockNoColor;
         }
 
-        if (route.name === 'Profile') {
+        if (route.name === 'History') {
           iconName = focused
-          ? profile
-          : profileNoColor;
+          ? calendar
+          : calendarNoColor;
         } 
         return <Image style={styles.tabIconStyle} source={iconName}/>;
      },})}>
       <Tab.Screen name="MyGym">{(props) => <MyGym {...props} user={user} updateEquipment={updateEquipment}/>}</Tab.Screen>
       <Tab.Screen name="Routine">{(props) => <Routine {...props} findExercises={findExercises} userEquipment={userEquipment}/>}</Tab.Screen>
-      <Tab.Screen name="Profile">{(props) => <Profile/>}</Tab.Screen>
+      <Tab.Screen name="History">{(props) => <History/>}</Tab.Screen>
   </Tab.Navigator >
   )
 }

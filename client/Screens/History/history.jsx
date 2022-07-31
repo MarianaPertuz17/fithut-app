@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native';
 
-export default function Profile () {
+export default function History () {
 
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
