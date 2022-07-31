@@ -45,6 +45,10 @@ export default function App() {
     }
   }
 
+  const sendRoutine = async (routine) => {
+    await userService.postRoutine(routine, userInfo._id);
+  }
+
 
   return (
     <NavigationContainer>
@@ -52,8 +56,8 @@ export default function App() {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="ExerciseInfo" component={ExerciseInfo} />
-        <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList}/>}</Stack.Screen>
+        <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList} sendRoutine={sendRoutine}/>}</Stack.Screen>
+        <Stack.Screen name="ExerciseInfo">{(props) => <ExerciseInfo {...props} exerciseList={exerciseList}/>}</Stack.Screen>
         <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment}/>}</Stack.Screen>
       </Stack.Navigator>
 

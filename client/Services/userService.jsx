@@ -23,10 +23,30 @@ userService.putEquipment = (id, equipment) => {
 }
 
 userService.getExercises = (bodyPart, equipment) => {
-  console.log(equipment, 'el equi del ment')
   return fetch(`${url}/exercises/${bodyPart}`)
           .then(res => res.json())
           .then(data => data)
           .catch(e => e);
 }
 
+userService.getRoutines = (userId) => {
+  return fetch(`${url}/routines/${userId}`)
+          .then(res => res.json())
+          .then(data => data)
+          .catch(e => e);
+}
+
+userService.postRoutine = (routine, userId) => {
+
+  console.log('tratando de enviar2', routine, userId)
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({routine, userId}) //enviar routine
+  }; 
+
+  return fetch(`${url}/routines`, requestOptions)
+          .then(res => res.json())
+          .then(data => data)
+          .catch(e => e);
+}

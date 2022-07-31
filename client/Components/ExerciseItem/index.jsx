@@ -5,12 +5,13 @@ import coreIcon from '../../assets/images/core-icon.png';
 import { styles } from './styles';
 
 
-export function ExerciseItem ({navigation, exercise}) {
+export function ExerciseItem ({navigation, exercise, updateRoutine}) {
 
   const { name, target, gifUrl, bodyTarget, equipment} = exercise;
-  const setNumber = Math.round(Math.random()*2)+2;
-  const reps = Math.round(Math.random()*20)+5;
-  const formattedName = name.slice(0,1).toUpperCase()+name.slice(1);
+  const setNumber = Math.round(Math.random() * 2) + 2;
+  const reps = Math.round(Math.random() * 20) + 5;
+  const formattedName = name.slice(0,1).toUpperCase() + name.slice(1);
+
 
   return(
     <View style={styles.exerciseContainer}>
@@ -34,7 +35,8 @@ export function ExerciseItem ({navigation, exercise}) {
           target, 
           gifUrl, 
           bodyTarget, 
-          equipment
+          equipment,
+          updateRoutine
         })}>
           <Text style={{...styles.spanText, fontWeight:'normal', fontStyle:'italic'}}>See instructions</Text>
         </Pressable>

@@ -6,7 +6,7 @@ import { Repetition } from '../../Components/Repetition';
 
 
 export function ExerciseInfo ({navigation, route}) {
-  const { setNumber, reps, formattedName, target, gifUrl, bodyTarget, equipment } = route.params;
+  const { setNumber, reps, formattedName, gifUrl, target, equipment, updateRoutine } = route.params;
   const [ counter, setCounter ] = useState(-1);
 
   const logSetClicked = () => {
@@ -18,9 +18,24 @@ export function ExerciseInfo ({navigation, route}) {
       {
         text: 'NO',
       },
-      { text: 'YES', onPress: () => navigation.navigate('Routine') },
+      { text: 'YES', onPress: () => {
+        handleSend(
+          {
+            exerciseName: formattedName,
+            setsCompleted: counter+1,
+            realSets: setNumber,
+            repsPerSet: reps
+          }
+        )
+        navigation.navigate('TodaysRoutine') 
+      }},
     ]);
-   }
+  }
+
+
+  const handleSend = (newEle) => {
+    updateRoutine(newEle)
+  }
   
   return(
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
@@ -62,7 +77,16 @@ export function ExerciseInfo ({navigation, route}) {
           </Pressable>
         ):
         (
-          <Pressable onPress={logSetClicked} style={styles.buttonFinish}>
+          <Pressable onPress={() => {
+            handleSend(
+              {
+                exerciseName: formattedName,
+                setsCompleted: counter+1,
+                realSets: setNumber,
+                repsPerSet: reps
+              })
+            
+            navigation.navigate('TodaysRoutine')}} style={styles.buttonFinish}>
             <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Done</Text>
           </Pressable>
         )

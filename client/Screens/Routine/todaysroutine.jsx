@@ -1,18 +1,29 @@
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image, Alert } from 'react-native';
+import { useState } from 'react';
+import { StyleSheet, View, Pressable, Image, Alert, Text } from 'react-native';
 import backArrow from '../../assets/images/back-arrow.png';
 import { ExerciseList } from '../../Components/ExerciseList';
 
-export default function TodaysRoutine ({navigation, updateEquipment, findExercises, exerciseList}) {
+export default function TodaysRoutine ({navigation, exerciseList, sendRoutine}) {
 
+  const [ routine, setRoutine ] = useState([]);
 
- const handleBack = () => {
-  Alert.alert('', `You are not done with the exercises yet. Are you sure you want to finish this workout?`, [
-    {
-      text: 'NO',
-    },
-    { text: 'YES', onPress: () => navigation.navigate('Routine') },
-  ]);
- }
+  const updateRoutine = (newRoutine) => {
+    setRoutine(prevRoutine => [ ...prevRoutine, newRoutine]);
+  }
+
+  const handleSend = () => {
+    console.log( 'el arrnay', routine)
+    sendRoutine(routine)
+  }
+
+  const handleBack = () => {
+    Alert.alert('', `You are not done with the exercises yet. Are you sure you want to finish this workout?`, [
+      {
+        text: 'NO',
+      },
+      { text: 'YES', onPress: () => navigation.navigate('Routine') },
+    ]);
+  }
 
  
   return (
@@ -22,9 +33,12 @@ export default function TodaysRoutine ({navigation, updateEquipment, findExercis
         <Image source={backArrow} style={styles.backIcon}/>
       </Pressable>
 
-      <ExerciseList exerciseList={exerciseList} navigation={navigation}/>
+      <ExerciseList exerciseList={exerciseList} navigation={navigation} updateRoutine={updateRoutine}/>
 
-      
+      <Pressable onPress={handleSend} style={styles.button}>
+        <Text style={{ fontWeight:'bold', color:'#9A9CE9', fontSize:19, fontStyle:'italic'}}>Finish workout</Text>
+      </Pressable>
+  
     </View>
   )
 }
@@ -69,16 +83,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     alignSelf: 'center',
     justifyContent: 'center',
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    elevation: 3,
-    backgroundColor: '#10ECE4',
+    backgroundColor: 'white',
     borderColor: 'transparent',
-    borderRadius:50,
+    borderRadius: 10,
     borderWidth: 1.3,
-    width:'70%',
+    width:190,
+    height:25,
     marginTop:'10%',
-    marginBottom:15
+    position:'absolute',
+    bottom:10,
+    right:'4%',
+    alignSelf:'flex-end'
   },
 
   text: {

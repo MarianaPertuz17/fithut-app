@@ -10,6 +10,25 @@ const Exercise = require('../models/exercise')
 //   }
 // };
 
+exports.updateExercise = async (req, res) => {
+
+  try {
+    const response = await Exercise.find({bodyTarget: 'Core'}); //hay que cambiar por findById
+
+    for (let value of response) {
+      const setNumber = Math.round(Math.random() * 2) + 2;
+      const reps = Math.round(Math.random() * 20) + 5;
+      const newExercise = await Exercise.updateOne({_id: value._id}, {$set: {sets: setNumber, reps: reps}}, {new: true, upsert: true});
+    }
+
+    res.status(201).send({res: 'great' , error: false});
+  } catch (e) {
+    console.log(e, 'errror')
+    res.status(500).send({res: 'Cound not post Exercise', error: true});
+  }
+
+}
+
 exports.getExercises = async (req, res) => {
   try {
     const exercises = await Exercise.find({bodyTarget: req.params.bodyPart})

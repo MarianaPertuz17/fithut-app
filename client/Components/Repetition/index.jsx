@@ -1,11 +1,11 @@
 
 import { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Animated, Image} from 'react-native';
-import check from '../../assets/images/checkmark.png'
+
 
 const FadeInView = (props) => {
-  const percentageFilled = new Animated.Value(0)  // Initial value for opacity: 0
-  const { check, setCheck } = useState(false)
+  const percentageFilled = new Animated.Value(0);
+  const { check, setCheck } = useState(false);
   useEffect(() => {
 
     if (percentageFilled === 30) setCheck(true)
@@ -35,7 +35,7 @@ const FadeInView = (props) => {
 }
 
 export function Repetition ({reps, counter, index, setNumber}) {
-  console.log(index, 'indice', index, setNumber)
+
   return (
     <View>
       <View style={styles.container}>

@@ -11,7 +11,6 @@ const Tab = createBottomTabNavigator();
 
 export const TabNavigator = ({user, updateEquipment, findExercises, userEquipment}) => {
 
-  console.log(updateEquipment, 'la supuesta func')
   return(
     <Tab.Navigator 
       initialRouteName='MyGym'     
