@@ -13,7 +13,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-export const TabNavigator = ({user, updateEquipment, findExercises, userEquipment}) => {
+export const TabNavigator = ({user, updateEquipment, findExercises, userEquipment, routines, findUserRoutines}) => {
 
   return(
     <Tab.Navigator 
@@ -47,7 +47,7 @@ export const TabNavigator = ({user, updateEquipment, findExercises, userEquipmen
      },})}>
       <Tab.Screen name="MyGym">{(props) => <MyGym {...props} user={user} updateEquipment={updateEquipment}/>}</Tab.Screen>
       <Tab.Screen name="Routine">{(props) => <Routine {...props} findExercises={findExercises} userEquipment={userEquipment}/>}</Tab.Screen>
-      <Tab.Screen name="History">{(props) => <History/>}</Tab.Screen>
+      <Tab.Screen name="History">{(props) => <History {...props} routines={routines} findUserRoutines={findUserRoutines}/>}</Tab.Screen>
   </Tab.Navigator >
   )
 }

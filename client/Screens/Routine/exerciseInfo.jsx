@@ -6,7 +6,7 @@ import { Repetition } from '../../Components/Repetition';
 
 
 export function ExerciseInfo ({navigation, route}) {
-  const { sets, reps, formattedName, gifUrl, target, equipment, updateRoutine } = route.params;
+  const { sets, reps, formattedName, gifUrl, target, equipment, updateRoutine, bodyTarget } = route.params;
   const [ counter, setCounter ] = useState(-1);
 
   const logSetClicked = () => {
@@ -24,7 +24,8 @@ export function ExerciseInfo ({navigation, route}) {
             exerciseName: formattedName,
             setsCompleted: counter+1,
             realSets: sets,
-            repsPerSet: reps
+            repsPerSet: reps,
+            routineName: bodyTarget
           }
         )
         navigation.navigate('TodaysRoutine') 
@@ -83,7 +84,8 @@ export function ExerciseInfo ({navigation, route}) {
                 exerciseName: formattedName,
                 setsCompleted: counter+1,
                 realSets: sets,
-                repsPerSet: reps
+                repsPerSet: reps,
+                routineName: bodyTarget
               })
             
             navigation.navigate('TodaysRoutine')}} style={styles.buttonFinish}>

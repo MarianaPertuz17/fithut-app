@@ -48,7 +48,6 @@ export default function Routine ({navigation, findExercises, userEquipment}) {
 
     findExercises((bodyPartOptions.find(part => part.selected === true)).name, userEquipment.map(equi => equi.equipment));
     navigation.navigate('TodaysRoutine');
-    console.log('find')
   }
 
 

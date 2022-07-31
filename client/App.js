@@ -17,6 +17,7 @@ export default function App() {
   const [ userInfo, setUserInfo ] = useState([]);
   const [ exerciseList, setExerciseList ] = useState([]);
   const [ userEquipment, setUserEquipment ] = useState([]);
+  const [ routinesList, setRoutinesList ] = useState([]);
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -27,6 +28,14 @@ export default function App() {
 
     fetchUserInfo();
   }, []);
+
+
+  const findUserRoutines = async() => {
+    const {res, error} = await userService.getRoutines(userInfo._id);
+    if (!error) setRoutinesList(res);
+  }
+
+
 
   const updateEquipment = async (id, equipment) => {
     const {res, error} = await userService.putEquipment(id, equipment);
@@ -42,7 +51,6 @@ export default function App() {
       let selected = shuffled.slice(0, 12);
 
       setExerciseList(selected);
-      console.log(selected, 'eñe')
 
     }
   }
@@ -50,7 +58,7 @@ export default function App() {
   const sendRoutine = async (routine) => {
     await userService.postRoutine(routine, userInfo._id);
   }
-  console.log(exerciseList, 'exxxx')
+
 
   return (
     <NavigationContainer>
@@ -60,7 +68,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
         {exerciseList && <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList} sendRoutine={sendRoutine}/>}</Stack.Screen>}
         <Stack.Screen name="ExerciseInfo">{(props) => <ExerciseInfo {...props} exerciseList={exerciseList}/>}</Stack.Screen>
-        <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment}/>}</Stack.Screen>
+        <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment} routines={routinesList} findUserRoutines={findUserRoutines}/>}</Stack.Screen>
       </Stack.Navigator>
 
     </NavigationContainer>

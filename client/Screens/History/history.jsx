@@ -1,12 +1,17 @@
+import { useEffect } from 'react';
 import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native';
+import { LogList } from '../../Components/LogList';
 
-export default function History () {
 
+export default function History ({routines, findUserRoutines}) {
+
+  
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
       
-      <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'5%',marginTop:'25%', marginBottom:'15%'}}>My profile</Text>
+      <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'5%',marginTop:'25%', marginBottom:'15%'}}>Log History</Text>
 
+      <LogList routines={routines} findUserRoutines={findUserRoutines}/> 
       
     </View>
   )

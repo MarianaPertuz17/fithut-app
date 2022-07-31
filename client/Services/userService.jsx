@@ -30,6 +30,7 @@ userService.getExercises = (bodyPart, equipment) => {
 }
 
 userService.getRoutines = (userId) => {
+  console.log(userId, 'id adentro')
   return fetch(`${url}/routines/${userId}`)
           .then(res => res.json())
           .then(data => data)
@@ -37,8 +38,6 @@ userService.getRoutines = (userId) => {
 }
 
 userService.postRoutine = (routine, userId) => {
-
-  console.log('tratando de enviar2', routine, userId)
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
