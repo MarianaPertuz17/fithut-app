@@ -3,9 +3,13 @@ import myGym from '../assets/images/mygym-icon.png';
 import myGymNoColor from '../assets/images/mygym-icon-nocolor.png';
 import clock from '../assets/images/clock.png';
 import clockNoColor from '../assets/images/clock-nocolor.png';
+import profile from '../assets/images/profile.png';
+import profileNoColor from '../assets/images/profile-nocolor.png';
 import MyGym from '../Screens/MyGym/equipment'
 import Routine from '../Screens/Routine/routine';
+import Profile from '../Screens/Profile/profile';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -27,15 +31,23 @@ export const TabNavigator = ({user, updateEquipment, findExercises, userEquipmen
             iconName = focused
             ? myGym
             : myGymNoColor;
-          } else if (route.name === 'Routine') {
+        } 
+        if (route.name === 'Routine') {
             iconName = focused
             ? clock
             : clockNoColor;
-          } 
+        }
+
+        if (route.name === 'Profile') {
+          iconName = focused
+          ? profile
+          : profileNoColor;
+        } 
         return <Image style={styles.tabIconStyle} source={iconName}/>;
      },})}>
       <Tab.Screen name="MyGym">{(props) => <MyGym {...props} user={user} updateEquipment={updateEquipment}/>}</Tab.Screen>
       <Tab.Screen name="Routine">{(props) => <Routine {...props} findExercises={findExercises} userEquipment={userEquipment}/>}</Tab.Screen>
+      <Tab.Screen name="Profile">{(props) => <Profile/>}</Tab.Screen>
   </Tab.Navigator >
   )
 }

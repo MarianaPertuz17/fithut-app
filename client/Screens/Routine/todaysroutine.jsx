@@ -3,8 +3,8 @@ import { StyleSheet, View, Pressable, Image, Alert, Text } from 'react-native';
 import backArrow from '../../assets/images/back-arrow.png';
 import { ExerciseList } from '../../Components/ExerciseList';
 
-export default function TodaysRoutine ({navigation, exerciseList, sendRoutine}) {
-
+export default function TodaysRoutine ({navigation, exerciseList, sendRoutine, route}) {
+  
   const [ routine, setRoutine ] = useState([]);
 
   const updateRoutine = (newRoutine) => {
@@ -12,7 +12,6 @@ export default function TodaysRoutine ({navigation, exerciseList, sendRoutine}) 
   }
 
   const handleSend = () => {
-    console.log( 'el arrnay', routine)
     sendRoutine(routine)
   }
 
@@ -34,7 +33,7 @@ export default function TodaysRoutine ({navigation, exerciseList, sendRoutine}) 
       </Pressable>
 
       <View style={{borderBottomWidth:1, borderBottomColor:'gray', paddingBottom:5, width:'90%', alignSelf:'center', marginBottom:20}}>
-        <Text style={styles.text}>{(exerciseList[0].bodyTarget)} Workout</Text>
+        {exerciseList.length > 0 && <Text style={styles.text}>{(exerciseList[0].bodyTarget)} Workout</Text>}
       </View>
 
       <ExerciseList exerciseList={exerciseList} navigation={navigation} updateRoutine={updateRoutine}/>
