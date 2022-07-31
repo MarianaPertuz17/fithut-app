@@ -7,9 +7,7 @@ import { styles } from './styles';
 
 export function ExerciseItem ({navigation, exercise, updateRoutine}) {
 
-  const { name, target, gifUrl, bodyTarget, equipment} = exercise;
-  const setNumber = Math.round(Math.random() * 2) + 2;
-  const reps = Math.round(Math.random() * 20) + 5;
+  const { name, target, gifUrl, bodyTarget, equipment, sets, reps } = exercise;
   const formattedName = name.slice(0,1).toUpperCase() + name.slice(1);
 
 
@@ -24,12 +22,12 @@ export function ExerciseItem ({navigation, exercise, updateRoutine}) {
       <View style ={{marginLeft: '2%'}}>
         <Text style={styles.exerciseName}>{formattedName}</Text>
         <View style = {styles.spanContainer}>
-          <Text style={styles.spanText}>{setNumber} SETS - </Text>
+          <Text style={styles.spanText}>{sets} SETS - </Text>
           <Text style={styles.spanText}>{reps} REPS</Text>
         </View>
 
         <Pressable onPress={() => navigation.navigate('ExerciseInfo', {
-          setNumber,
+          sets,
           reps,
           formattedName, 
           target, 

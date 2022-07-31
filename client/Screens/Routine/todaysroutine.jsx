@@ -33,6 +33,10 @@ export default function TodaysRoutine ({navigation, exerciseList, sendRoutine}) 
         <Image source={backArrow} style={styles.backIcon}/>
       </Pressable>
 
+      <View style={{borderBottomWidth:1, borderBottomColor:'gray', paddingBottom:5, width:'90%', alignSelf:'center', marginBottom:20}}>
+        <Text style={styles.text}>{(exerciseList[0].bodyTarget)} Workout</Text>
+      </View>
+
       <ExerciseList exerciseList={exerciseList} navigation={navigation} updateRoutine={updateRoutine}/>
 
       <Pressable onPress={handleSend} style={styles.button}>
@@ -45,38 +49,11 @@ export default function TodaysRoutine ({navigation, exerciseList, sendRoutine}) 
 
 const styles = StyleSheet.create({
 
-  iconsContainer: {
-    height:'40%',
-    alignItems:'center',
-    justifySelf:'center'
-  },
-
-  exerciseContainer: {
-    alignItems: 'center',
-    padding:10,
-    backgroundColor: '#2E2E42',
-    opacity: 1,
-    borderColor: 'transparent',
-    borderRadius:20,
-    borderWidth: 1.3,
-    width: '47%',
-  },
-
-  icon: {
-    width: 60,
-    height: 60,
-  },
-
   backIcon: {
     width: 35,
     height: 35,
     marginTop:50,
     marginLeft: 20
-  },
-
-  exerciseName: {
-    color: '#9A9CE9',
-    marginBottom:'15%'
   },
 
   button: {
@@ -91,17 +68,17 @@ const styles = StyleSheet.create({
     height:25,
     marginTop:'10%',
     position:'absolute',
-    bottom:10,
+    bottom:20,
     right:'4%',
     alignSelf:'flex-end'
   },
 
   text: {
-    fontSize: 16,
-    lineHeight: 25,
+    fontSize: 20,
     fontWeight: 'bold',
-    color: 'white',
+    color: 'gray',
     letterSpacing: 0.25,
-    fontFamily: 'Epilogue-Bold'
+    fontFamily: 'Epilogue-Bold',
+    alignSelf:'center'
   },
 });

@@ -34,7 +34,7 @@ const FadeInView = (props) => {
   );
 }
 
-export function Repetition ({reps, counter, index, setNumber}) {
+export function Repetition ({reps, counter, index, sets}) {
 
   return (
     <View>
@@ -54,7 +54,7 @@ export function Repetition ({reps, counter, index, setNumber}) {
         </View>
           
       </View>
-      {index <= setNumber-2 && <View style={{width:1, height:30, backgroundColor:'gray', marginLeft:'16.5%'}}></View>}
+      {index <= sets-2 && <View style={{width:1, height:30, backgroundColor:'gray', marginLeft:'16.5%'}}></View>}
     </View>
     
 

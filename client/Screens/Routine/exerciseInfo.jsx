@@ -6,7 +6,7 @@ import { Repetition } from '../../Components/Repetition';
 
 
 export function ExerciseInfo ({navigation, route}) {
-  const { setNumber, reps, formattedName, gifUrl, target, equipment, updateRoutine } = route.params;
+  const { sets, reps, formattedName, gifUrl, target, equipment, updateRoutine } = route.params;
   const [ counter, setCounter ] = useState(-1);
 
   const logSetClicked = () => {
@@ -23,7 +23,7 @@ export function ExerciseInfo ({navigation, route}) {
           {
             exerciseName: formattedName,
             setsCompleted: counter+1,
-            realSets: setNumber,
+            realSets: sets,
             repsPerSet: reps
           }
         )
@@ -58,12 +58,12 @@ export function ExerciseInfo ({navigation, route}) {
         </View>
         
         <Image style={{width:300, height:300, flexDirection: 'column', alignSelf:'center'}} source={require('./homer.gif')}/>
-        <Text style={styles.spanText}>{setNumber} SETS</Text>
+        <Text style={styles.spanText}>{sets} SETS</Text>
         
-        {[...Array(setNumber)].map((ele, index) => {
+        {[...Array(sets)].map((ele, index) => {
         return (
           <View>
-            <Repetition reps={reps} counter={counter} key={index} index={index} setNumber={setNumber}/>
+            <Repetition reps={reps} counter={counter} key={index} index={index} sets={sets}/>
           </View>
           
         )})}
@@ -71,7 +71,7 @@ export function ExerciseInfo ({navigation, route}) {
         <Instructions target={target} equipment={equipment} />
       
       </ScrollView>
-        {counter < setNumber-1 ? (
+        {counter < sets-1 ? (
           <Pressable onPress={logSetClicked} style={styles.button}>
             <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Log set</Text>
           </Pressable>
@@ -82,7 +82,7 @@ export function ExerciseInfo ({navigation, route}) {
               {
                 exerciseName: formattedName,
                 setsCompleted: counter+1,
-                realSets: setNumber,
+                realSets: sets,
                 repsPerSet: reps
               })
             
