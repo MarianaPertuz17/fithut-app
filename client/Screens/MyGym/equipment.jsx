@@ -6,100 +6,127 @@ import { TabSelector } from '../../Components/TabSelector';
 const freeWeights = [
   {
     "equipment": "dumbbell",
-    "added": false
+    "added": false,
+    'icon': require('../../assets/images/dumbbell.jpg')
   },
   {
     "equipment": "barbell",
-    "added": false    
+    "added": false,
+    'icon': require('../../assets/images/barbell.png') 
   },
   {
     "equipment": "ez barbell",
-    "added": false
+    "added": false,
+    'icon': require('../../assets/images/ezbarbell.jpg')
   },
   {
     "equipment": "olympic barbell",
-    "added": false
+    "added": false,
+    'icon': require('../../assets/images/olympicbarbell.jpg')
   },
   {
     "equipment": "kettlebell",
-    "added": false
+    "added": false,
+    'icon': require('../../assets/images/kettlebell.jpg')
   },
   {
     "equipment": "trap bar",
-    "added": false
+    "added": false,
+    'icon': require('../../assets/images/trapbar.jpg')
   },
   {
     "equipment": "medicine ball",
-    "added": false
+    "added": false,
+    'icon': require('../../assets/images/medicineball.jpg')
   }
 ];
 
 
 const machines = [
   {
-    "equipment": "elliptical machine"
+    "equipment": "elliptical machine",
+    'icon': require('../../assets/images/ellipticalmachine.jpg')
   },
   {
-    "equipment": "cable"
+    "equipment": "cable",
+    'icon': require('../../assets/images/cable.jpg')
   },
   {
-    "equipment": "stepmill machine"
+    "equipment": "stepmill machine",
+    'icon': require('../../assets/images/stepmill.jpg')
   },
   {
-    "equipment": "leverage machine"
+    "equipment": "leverage machine",
+    'icon': require('../../assets/images/leveragemachine.jpg')
   },
   {
-    "equipment": "skierg machine"
+    "equipment": "skierg machine",
+    'icon': require('../../assets/images/skierg.jpg')
   },
   {
-    "equipment": "sled machine"
+    "equipment": "sled machine",
+    'icon': require('../../assets/images/sledmachine.jpg')
   },
   {
-    "equipment": "smith machine"
+    "equipment": "smith machine",
+    'icon': require('../../assets/images/smithmachine.jpg')
   },
   {
-    "equipment": "stationary bike"
+    "equipment": "stationary bike",
+    'icon': require('../../assets/images/stationarybike.jpg')
   },
   {
-    "equipment": "upper body ergometer"
+    "equipment": "upper body ergometer",
+    'icon': require('../../assets/images/upperbodyergometer.jpg')
   }
 ];
 
 
 const bandsAndMore = [
   {
-    "equipment": "band"
+    "equipment": "band",
+    'icon': require('../../assets/images/band.jpg')
   },
   {
-    "equipment": "bosu ball"
+    "equipment": "bosu ball",
+    'icon': require('../../assets/images/bosuball.jpg')
   },
   {
-    "equipment": "rope"
+    "equipment": "rope",
+    'icon': require('../../assets/images/rope.jpg')
   },
   {
-    "equipment": "tire"
+    "equipment": "tire",
+    'icon': require('../../assets/images/tire.jpg')
   },
   {
-    "equipment": "stability ball"
+    "equipment": "stability ball",
+    'icon': require('../../assets/images/stabilityball.jpg')
   },
   {
-    "equipment": "wheel roller"
+    "equipment": "wheel roller",
+    'icon': require('../../assets/images/wheelroller.jpg')
   },
   ,
   {
-    "equipment": "roller"
+    "equipment": "roller",
+    'icon': require('../../assets/images/roller.jpg')
   },
   {
-    "equipment": "resistance band"
+    "equipment": "resistance band",
+    'icon': require('../../assets/images/resistancebar.jpg')
   },
   {
-    "equipment": "hammer"
+    "equipment": "hammer",
+    'icon': require('../../assets/images/hammer.jpg')
   },
   {
-    "equipment": "assisted"
+    "equipment": "assisted",
+    'icon': require('../../assets/images/assisted.png')
   },
   {
-    "equipment": "weighted"
+    "equipment": "weighted",
+    'icon': require('../../assets/images/weighted.jpg')
   }
 ];
 

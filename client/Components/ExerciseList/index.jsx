@@ -9,7 +9,7 @@ export function ExerciseList ({exerciseList, navigation, updateRoutine}) {
     <>
       {updateRoutine ? 
       <ScrollView>
-        {exerciseList.map((exercise, index) => <ExerciseItem exercise={exercise} key={index} navigation={navigation} updateRoutine={updateRoutine}/>)}
+        {exerciseList.map((exercise, index) => <ExerciseItem exercise={exercise} key={index} navigation={navigation} updateRoutine={updateRoutine} />)}
       </ScrollView>:
       
       <ScrollView>

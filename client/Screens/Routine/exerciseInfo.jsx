@@ -27,15 +27,19 @@ export function ExerciseInfo ({navigation, route}) {
             repsPerSet: reps,
             routineName: bodyTarget
           }
-        )
-        navigation.navigate('TodaysRoutine') 
+        ) 
       }},
     ]);
   }
 
 
   const handleSend = (newEle) => {
-    updateRoutine(newEle)
+    updateRoutine(newEle);
+    if (sets === counter + 1) {
+      navigation.navigate('TodaysRoutine', {done: true})
+    } else {
+      navigation.navigate('TodaysRoutine')
+    }
   }
   
   return(
@@ -86,9 +90,7 @@ export function ExerciseInfo ({navigation, route}) {
                 realSets: sets,
                 repsPerSet: reps,
                 routineName: bodyTarget
-              })
-            
-            navigation.navigate('TodaysRoutine')}} style={styles.buttonFinish}>
+              })}} style={styles.buttonFinish}>
             <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Done</Text>
           </TouchableOpacity>
         )

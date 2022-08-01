@@ -41,7 +41,7 @@ export function Repetition ({reps, counter, index, sets}) {
       <View style={styles.container}>
       {index === counter && 
       (<View style={{...styles.icon, backgroundColor:'white'}}>
-          <FadeInView style={{...styles.icon,width: '100%', height: '100%'}}/>
+        <FadeInView style={{...styles.icon,width: '100%', height: '100%'}}/>
       </View>)
       }
 
