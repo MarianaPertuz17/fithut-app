@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     width:30,
     height:30,
     position: 'absolute',
-    left:75,
+    left:95,
     top:72
   },
 
@@ -24,6 +24,9 @@ export const styles = StyleSheet.create({
     padding:7,
     backgroundColor: '#171724',
     borderRadius:10,
+    width:'29%',
+    flexDirection:'column',
+    alignItems:'center'
   },
 
   exerciseName: {

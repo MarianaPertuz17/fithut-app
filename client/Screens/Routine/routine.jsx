@@ -67,7 +67,6 @@ export default function Routine ({navigation, findExercises, userEquipment}) {
         {bodyParts.map((bodyPart, index) => <BodyList key={index} bodyPart={bodyPart} onTap={onTap}/>)}
       </View>
       
-
       <TouchableOpacity style={styles.button} onPress={handleStartWorkout}>
         <Text style={styles.text}>START WORKOUT</Text>
       </TouchableOpacity>

@@ -18,13 +18,16 @@ export const styles = StyleSheet.create({
     height:30,
     position: 'absolute',
     left:95,
-    top:80
+    top:72
   },
 
   iconContainer: {
     padding:7,
     backgroundColor: '#171724',
     borderRadius:10,
+    width:'29%',
+    flexDirection:'column',
+    alignItems:'center'
   },
 
   exerciseName: {
