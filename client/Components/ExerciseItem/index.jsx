@@ -4,25 +4,30 @@ import lowerIcon from '../../assets/images/leg-icon.png';
 import coreIcon from '../../assets/images/core-icon.png';
 import checkmark from '../../assets/images/check_mark.png';
 import { styles } from './styles';
-import { useState } from 'react';
 
 
 export function ExerciseItem ({navigation, exercise, updateRoutine}) {
 
   const { name, target, gifUrl, bodyTarget, equipment, sets, reps } = exercise;
-  const [ done, setDone ] = useState(false);
-
   const formattedName = name.slice(0,1).toUpperCase() + name.slice(1);
 
   return(
-    <View style={styles.exerciseContainer}>
+   
+    <Pressable style={styles.exerciseContainer} onPress={() => navigation.navigate('ExerciseInfo', {
+      sets,
+      reps,
+      formattedName, 
+      target, 
+      gifUrl, 
+      bodyTarget, 
+      equipment,
+      updateRoutine
+    })}>
       <View style={styles.iconContainer} >
         {bodyTarget === 'Upper Body' && <Image source={upperIcon} style={styles.icon}/>}
         {bodyTarget === 'Lower Body' && <Image source={lowerIcon} style={styles.icon}/>}
         {bodyTarget === 'Core' && <Image source={coreIcon} style={styles.icon}/>}
       </View>
-
-      
       <Image source={checkmark} style={styles.checkMark}/>
 
       <View style ={{marginLeft: '2%'}}>
@@ -31,20 +36,9 @@ export function ExerciseItem ({navigation, exercise, updateRoutine}) {
           <Text style={styles.spanText}>{sets} SETS - </Text>
           <Text style={styles.spanText}>{reps} REPS</Text>
         </View>
-
-        <Pressable onPress={() => navigation.navigate('ExerciseInfo', {
-          sets,
-          reps,
-          formattedName, 
-          target, 
-          gifUrl, 
-          bodyTarget, 
-          equipment,
-          updateRoutine
-        })}>
-          <Text style={{...styles.spanText, fontWeight:'normal', fontStyle:'italic'}}>See instructions</Text>
-        </Pressable>
+        
+        <Text style={{...styles.spanText, fontWeight:'normal', fontStyle:'italic'}}>See instructions</Text>
       </View>  
-    </View>
+    </Pressable>
   )
 }

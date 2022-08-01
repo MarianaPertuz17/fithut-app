@@ -3,19 +3,19 @@ import { StyleSheet, Text, View } from 'react-native';
 import { LogList } from '../../Components/LogList';
 
 
-export default function History ({routines, findUserRoutines}) {
+export default function History ({routines, findUserRoutines, navigation}) {
 
   useEffect(() => {
     findUserRoutines();
   }, []);
 
-  console.log(routines, 'la ruuururu')
+
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
       
       <Text style={{ fontFamily: 'Epilogue-Bold', fontSize: 30, color: 'white', marginLeft:'5%',marginTop:'25%', marginBottom:'15%'}}>Log History</Text>
 
-      <LogList routines={routines} findUserRoutines={findUserRoutines}/> 
+      <LogList routines={routines} findUserRoutines={findUserRoutines} navigation={navigation}/> 
       
     </View>
   )

@@ -3,16 +3,11 @@ import { ScrollView } from 'react-native';
 import { RoutineItem } from '../RoutineItem';
 
 
-export function LogList ({routines, findUserRoutines}) {
+export function LogList ({routines, navigation}) {
   
-  // useEffect(() => {
-  //   findUserRoutines();
-  //   console.log('getting there')
-  // }, []);
-
   return (
     <ScrollView>
-      {routines.map((exerciseArray, index) => <RoutineItem routine={exerciseArray} key={index}/>)}
+      {routines.map((exerciseArray, index) => <RoutineItem navigation={navigation} routine={exerciseArray} key={index}/>)}
     </ScrollView>
   )
 }
