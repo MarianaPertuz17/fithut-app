@@ -45,8 +45,15 @@ export default function Routine ({navigation, findExercises, userEquipment}) {
   };
 
   const handleStartWorkout = () => {
-
-    findExercises((bodyPartOptions.find(part => part.selected === true)).name, userEquipment.map(equi => equi.equipment));
+    let bodyPart = (bodyPartOptions.find(part => part.selected === true)).name;
+    if (bodyPart === 'Randomize') {
+      const options = ['Upper Body', 'Lower Body', 'Core'];
+      bodyPart = options[Math.floor(Math.random() * 3)];
+      findExercises(bodyPart, userEquipment.map(equi => equi.equipment));
+    }else{
+      findExercises(bodyPart, userEquipment.map(equi => equi.equipment));
+    }
+    
     navigation.navigate('TodaysRoutine');
   }
 
