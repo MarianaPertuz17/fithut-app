@@ -1,5 +1,7 @@
 import { StyleSheet, Text, ImageBackground, TouchableOpacity, View} from 'react-native';
 import image from '../../assets/images/exerciseScreen_wallpaper.png';
+import { Premium } from '../../Components/Premium';
+
 
 export default function MyGym ({navigation, user, updateEquipment}) {
 
@@ -11,6 +13,7 @@ export default function MyGym ({navigation, user, updateEquipment}) {
           <Text style={{color:'white', fontFamily: 'Epilogue-Light', fontSize: 15,}}>Change available equipment</Text>
         </TouchableOpacity>
         <Text style={{color:'gray', marginLeft:'5%'}}>If you want to start training, go right away to Routine.</Text>   
+        <Premium/> 
       </ImageBackground>   
     </View>
 
