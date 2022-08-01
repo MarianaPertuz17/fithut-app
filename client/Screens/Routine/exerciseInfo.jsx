@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, View, Image, Pressable, StyleSheet, Alert, ScrollView } from 'react-native';
+import { Text, View, Image, TouchableOpacity, StyleSheet, Alert, ScrollView } from 'react-native';
 import backArrow from '../../assets/images/back-arrow.png';
 import { Instructions } from '../../Components/Instructions';
 import { Repetition } from '../../Components/Repetition';
@@ -52,9 +52,9 @@ export function ExerciseInfo ({navigation, route}) {
 
       
         <View style={styles.headerContainer}>
-          <Pressable onPress={handleBack}>
+          <TouchableOpacity onPress={handleBack}>
             <Image source={backArrow} style={styles.backIcon}/>
-          </Pressable>
+          </TouchableOpacity>
           <Text style={styles.exerciseName}>{formattedName}</Text>
         </View>
         
@@ -73,12 +73,12 @@ export function ExerciseInfo ({navigation, route}) {
       
       </ScrollView>
         {counter < sets-1 ? (
-          <Pressable onPress={logSetClicked} style={styles.button}>
+          <TouchableOpacity onPress={logSetClicked} style={styles.button}>
             <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Log set</Text>
-          </Pressable>
+          </TouchableOpacity>
         ):
         (
-          <Pressable onPress={() => {
+          <TouchableOpacity onPress={() => {
             handleSend(
               {
                 exerciseName: formattedName,
@@ -90,7 +90,7 @@ export function ExerciseInfo ({navigation, route}) {
             
             navigation.navigate('TodaysRoutine')}} style={styles.buttonFinish}>
             <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Done</Text>
-          </Pressable>
+          </TouchableOpacity>
         )
         
         }

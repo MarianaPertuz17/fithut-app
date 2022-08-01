@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import image from '../../assets/images/homepage_wallpaper.png';
 import logo from '../../assets/images/FT_LOGO.png';
 import google_logo from '../../assets/images/google_logo.png';
@@ -34,25 +34,25 @@ export default function HomePage({ navigation }) {
           <Text style={styles.welcomeMessage}>Welcome to the hut of health and life quality. Have access to workouts that work out.</Text>
           
 
-            <Pressable style={styles.button} onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Login')}>
               <Text style={styles.text}>LOGIN WITH ACCOUNT</Text>
-            </Pressable>
+            </TouchableOpacity>
 
             <View style={{ flexDirection:'row', justifyContent:'space-between', marginTop:15, marginBottom: 25 }}>
-              <Pressable style={styles.auxButton}>
+              <TouchableOpacity style={styles.auxButton}>
                 <Image style={styles.googleIcon} source={google_logo}/>
-              </Pressable>
-              <Pressable style={styles.auxButton}>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.auxButton}>
                 <Image style={styles.fpIcon} source={fingerprint}/>
-              </Pressable>            
+              </TouchableOpacity>            
             </View>
 
             <View style={{ flexDirection:'row', justifyContent:'center' }}>
               <Text style={styles.signUpText}>Don't have an account yet? </Text>
 
-              <Pressable onPress={() => navigation.navigate('Register')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                 <Text style={styles.signUpPurpleText}>SIGN UP HERE</Text>
-              </Pressable>
+              </TouchableOpacity>
              
             </View>
             

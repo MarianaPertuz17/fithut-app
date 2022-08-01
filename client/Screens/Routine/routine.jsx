@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { BodyList } from '../../Components/BodyList';
 
@@ -61,9 +61,9 @@ export default function Routine ({navigation, findExercises, userEquipment}) {
       </View>
       
 
-      <Pressable style={styles.button} onPress={handleStartWorkout}>
+      <TouchableOpacity style={styles.button} onPress={handleStartWorkout}>
         <Text style={styles.text}>START WORKOUT</Text>
-      </Pressable>
+      </TouchableOpacity>
       
     </View>
   )

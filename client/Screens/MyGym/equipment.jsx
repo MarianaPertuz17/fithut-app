@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, Pressable} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import { EquipmentList } from '../../Components/EquipmentList';
 import { TabSelector } from '../../Components/TabSelector';
 
@@ -155,9 +155,9 @@ export default function MyGym ({navigation, user, updateEquipment}) {
 
   return (
     <View style={{ flex: 1, backgroundColor:'black' }}>
-      <Pressable style = {styles.saveButton} onPress={() => updateEquipment('62de1ccafceacff8700e6722',availableEquipment)} >
+      <TouchableOpacity style = {styles.saveButton} onPress={() => updateEquipment('62de1ccafceacff8700e6722',availableEquipment)} >
         <Text style={{color:'gray', fontFamily: 'Epilogue-SemiBold', fontSize: 17,}}>Save</Text>
-      </Pressable>
+      </TouchableOpacity>
       <Text style={{color:'gray', marginLeft:'5%'}}>Tap the equipment that is available to you.</Text>
       <TabSelector tabs={tabsState} onTabPress={onTabPress} />
       <EquipmentList list={tabsState.find(tab => tab.selected === true).childElements ?? []} onTapItem={handleTapItem} />

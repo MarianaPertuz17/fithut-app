@@ -7,7 +7,8 @@ export function RoutineItem ({routine}) {
 
   const { exercises, createdAt } = routine;
   const formattedDate = moment(createdAt).format('Do MMMM');
-  console.log(routine, 'la rutinas')
+
+  console.log(exercises, 'ejer')
   return(
 
     <View>
@@ -15,8 +16,9 @@ export function RoutineItem ({routine}) {
         <View style={styles.circleIcon}></View>
         <Text style={styles.dateText}>{formattedDate.toUpperCase()}</Text>
       </View>
-      
+      {exercises.length > 0 && 
       <View style={styles.exerciseContainer}>
+       
         <Text style={styles.routineName}>{exercises[0].routineName} Workout</Text>
         <View style={styles.extraInfoContainer}>
           <View>
@@ -29,8 +31,8 @@ export function RoutineItem ({routine}) {
             <Text style={{...styles.extraInfoText, fontWeight:'bold',color:'white'}}>{exercises.length}</Text>
           </View>
         </View>
-        
-      </View>
+      
+      </View>}
     </View>
     
   )

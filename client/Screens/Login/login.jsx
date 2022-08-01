@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View, Pressable, Image, TextInput } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
 import image from '../../assets/images/3d_wallpaper.png';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
@@ -38,20 +38,20 @@ export default function Login({ navigation }) {
             style={styles.textInput}
           ></TextInput>
 
-          <Pressable onPress={() => navigation.navigate('Login')} style={{ width:'50%', alignSelf:'flex-end'}}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')} style={{ width:'50%', alignSelf:'flex-end'}}>
             <Text style={styles.signUpPurpleText}>Forgot your password?</Text>
-          </Pressable>
+          </TouchableOpacity>
 
-          <Pressable style={styles.button} onPress={() => navigation.navigate('Main')}>
+          <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
               <Text style={styles.text}>LOGIN</Text>
-          </Pressable>
+          </TouchableOpacity>
 
           <View style={{ flexDirection:'row', justifyContent:'center' }} >
               <Text style={styles.signUpText}>Don't have an account yet? </Text>
 
-              <Pressable onPress={() => navigation.navigate('Register')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                 <Text style={styles.signUpPurpleText}>SIGN UP HERE</Text>
-              </Pressable>
+              </TouchableOpacity>
              
             </View>
         </View>

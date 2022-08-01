@@ -4,11 +4,14 @@ import lowerIcon from '../../assets/images/leg-icon.png';
 import coreIcon from '../../assets/images/core-icon.png';
 import checkmark from '../../assets/images/check_mark.png';
 import { styles } from './styles';
+import { useState } from 'react';
 
 
 export function ExerciseItem ({navigation, exercise, updateRoutine}) {
 
   const { name, target, gifUrl, bodyTarget, equipment, sets, reps } = exercise;
+  const [ done, setDone ] = useState(false);
+
   const formattedName = name.slice(0,1).toUpperCase() + name.slice(1);
 
   return(
