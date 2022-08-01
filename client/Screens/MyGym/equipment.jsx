@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
 import { EquipmentList } from '../../Components/EquipmentList';
 import { TabSelector } from '../../Components/TabSelector';
 
@@ -122,7 +122,7 @@ const tabs = [
 ]
 
 
-export default function MyGym ({navigation, user, updateEquipment}) {
+export default function MyGym ({user, updateEquipment}) {
 
   const [availableEquipment, setAvailableEquipment] = useState([]);
   const [tabsState, setTabsState] = useState(tabs)
@@ -152,10 +152,20 @@ export default function MyGym ({navigation, user, updateEquipment}) {
     })
   }
 
+  const handleSave = () => {
+    if (availableEquipment.length > 0) {
+      updateEquipment('62de1ccafceacff8700e6722',availableEquipment);
+      Alert.alert('Saved!', `The new equipment has been added to your gym`);
+    } else {
+      Alert.alert('Saved!', `Now you have no equipment in your gym`);
+    }
+    
+  }
+
 
   return (
     <View style={{ flex: 1, backgroundColor:'black' }}>
-      <TouchableOpacity style = {styles.saveButton} onPress={() => updateEquipment('62de1ccafceacff8700e6722',availableEquipment)} >
+      <TouchableOpacity style = {styles.saveButton} onPress={handleSave} >
         <Text style={{color:'gray', fontFamily: 'Epilogue-SemiBold', fontSize: 17,}}>Save</Text>
       </TouchableOpacity>
       <Text style={{color:'gray', marginLeft:'5%'}}>Tap the equipment that is available to you.</Text>
