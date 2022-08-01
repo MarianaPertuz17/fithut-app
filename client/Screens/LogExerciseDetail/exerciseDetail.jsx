@@ -17,14 +17,9 @@ export default function LogExerciseDetail ({navigation, route}) {
       <View style={{borderBottomWidth:1, borderBottomColor:'#444444', paddingBottom:40, paddingTop:25, width:'90%', alignSelf:'center'}}>
         {exercises.length > 0 && <Text style={styles.text}>{(exercises[0].routineName)} Workout</Text>}
         <Text style={styles.spanText}>{formattedDate}</Text>
-      </View>
-      
+      </View>    
 
       <ExerciseList exerciseList={exercises}/>
-
-      {/* <TouchableOpacity onPress={handleSend} style={styles.button}>
-        <Text style={{ fontWeight:'bold', color:'#9A9CE9', fontSize:19, fontStyle:'italic'}}>Finish workout</Text>
-      </TouchableOpacity> */}
   
     </View>
   )
