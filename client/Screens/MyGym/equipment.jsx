@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Alert} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert, Image} from 'react-native';
 import { EquipmentList } from '../../Components/EquipmentList';
 import { TabSelector } from '../../Components/TabSelector';
+import xIcon from '../../assets/images/x-icon.png'
 
 const freeWeights = [
   {
@@ -149,8 +150,9 @@ const tabs = [
 ]
 
 
-export default function MyGym ({user, updateEquipment}) {
+export default function Equipment ({route, navigation}) {
 
+  const { user, updateEquipment } = route.params;
   const [availableEquipment, setAvailableEquipment] = useState([]);
   const [tabsState, setTabsState] = useState(tabs)
 
@@ -180,19 +182,29 @@ export default function MyGym ({user, updateEquipment}) {
   const handleSave = () => {
     if (availableEquipment.length > 0) {
       updateEquipment('62de1ccafceacff8700e6722',availableEquipment);
-      Alert.alert('Saved!', `The new equipment has been added to your gym`);
+      // Alert.alert('Saved!', `The new equipment has been added to your gym`);
+      navigation.navigate('MyGym');
     } else {
       Alert.alert('Saved!', `Now you have no equipment in your gym`);
+      navigation.navigate('MyGym');
     }
+    
     
   }
 
 
   return (
     <View style={{ flex: 1, backgroundColor:'black' }}>
-      <TouchableOpacity style = {styles.saveButton} onPress={handleSave} >
-        <Text style={{color:'gray', fontFamily: 'Epilogue-SemiBold', fontSize: 17,}}>Save</Text>
-      </TouchableOpacity>
+      <View style={{flexDirection:'row',  marginLeft:'5%',  marginTop:'12%',marginBottom:'10%', justifyContent:'space-between'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('MyGym')}>
+          <Image source={xIcon} style={{width:20, height:30}}/>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style = {styles.saveButton} onPress={handleSave} >
+          <Text style={{color:'gray', fontFamily: 'Epilogue-SemiBold', fontSize: 17, textAlign:'center'}}>Save</Text>
+        </TouchableOpacity>
+      </View>
+
       <Text style={{color:'gray', marginLeft:'5%'}}>Tap the equipment that is available to you.</Text>
       <TabSelector tabs={tabsState} onTabPress={onTabPress} />
       <EquipmentList list={tabsState.find(tab => tab.selected === true).childElements ?? []} onTapItem={handleTapItem} />
@@ -213,22 +225,11 @@ const styles = StyleSheet.create({
   },
 
   saveButton: {
-    marginTop:'15%',
     width:'15%',
-    alignItems:'center',
-    alignSelf:'flex-end',
     marginRight:'5%',
-    marginBottom:'10%'
+    height:'100%',
+    flexDirection:'row',
+    alignItems:'center',
+    justifyContent:'flex-end'
   }
 })
-
-
-  
-
- // "body weight" siempre debe estar
-
-    
-  
-/*
-onPress={() => setAvailableEquipment(prevEq => [...prevEq, ele])}
-*/

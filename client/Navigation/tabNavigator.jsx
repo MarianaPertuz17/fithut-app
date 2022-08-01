@@ -5,7 +5,7 @@ import clock from '../assets/images/clock.png';
 import clockNoColor from '../assets/images/clock-nocolor.png';
 import calendar from '../assets/images/calendar.png';
 import calendarNoColor from '../assets/images/calendar-nocolor.png';
-import MyGym from '../Screens/MyGym/equipment'
+import MyGym from '../Screens/MyGym/index.jsx'
 import Routine from '../Screens/Routine/routine';
 import History from '../Screens/History/history';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';

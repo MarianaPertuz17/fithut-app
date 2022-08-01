@@ -9,6 +9,7 @@ import { TabNavigator } from './Navigation/tabNavigator';
 import { userService } from './Services/userService';
 import { ExerciseInfo } from './Screens/Routine/exerciseInfo';
 import LogExerciseDetail from './Screens/LogExerciseDetail/exerciseDetail';
+import Equipment from './Screens/MyGym/equipment';
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,7 @@ export default function App() {
         {exerciseList && <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList} sendRoutine={sendRoutine}/>}</Stack.Screen>}
         <Stack.Screen name="ExerciseInfo">{(props) => <ExerciseInfo {...props} exerciseList={exerciseList}/>}</Stack.Screen>
         <Stack.Screen name="LogExerciseInfo">{(props) => <LogExerciseDetail {...props}/>}</Stack.Screen>
+        <Stack.Screen name="Equipment">{(props) => <Equipment {...props}/>}</Stack.Screen>
         <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment} routines={routinesList} findUserRoutines={findUserRoutines}/>}</Stack.Screen>
       </Stack.Navigator>
 
