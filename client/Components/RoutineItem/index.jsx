@@ -8,7 +8,7 @@ export function RoutineItem ({routine}) {
   const { exercises, createdAt } = routine;
   const formattedDate = moment(createdAt).format('Do MMMM');
 
-  console.log(exercises, 'ejer')
+
   return(
 
     <View>

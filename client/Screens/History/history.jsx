@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { LogList } from '../../Components/LogList';
 
 
 export default function History ({routines, findUserRoutines}) {
 
-  
+  console.log(routines, 'la ruuururu')
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
       

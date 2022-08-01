@@ -57,6 +57,7 @@ export default function App() {
 
   const sendRoutine = async (routine) => {
     await userService.postRoutine(routine, userInfo._id);
+    findUserRoutines();
   }
 
 

@@ -5,11 +5,11 @@ import { RoutineItem } from '../RoutineItem';
 
 export function LogList ({routines, findUserRoutines}) {
   
-  useEffect(() => {
-    findUserRoutines();
-    console.log('getting there')
-  }, []);
-  
+  // useEffect(() => {
+  //   findUserRoutines();
+  //   console.log('getting there')
+  // }, []);
+
   return (
     <ScrollView>
       {routines.map((exerciseArray, index) => <RoutineItem routine={exerciseArray} key={index}/>)}
