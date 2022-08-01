@@ -5,6 +5,10 @@ import { LogList } from '../../Components/LogList';
 
 export default function History ({routines, findUserRoutines}) {
 
+  useEffect(() => {
+    findUserRoutines();
+  }, []);
+
   console.log(routines, 'la ruuururu')
   return (
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
