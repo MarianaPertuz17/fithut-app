@@ -14,7 +14,7 @@ export default function LogExerciseDetail ({navigation, route}) {
         <Image source={backArrow} style={styles.backIcon}/>
       </TouchableOpacity>
 
-      <View style={{borderBottomWidth:1, borderBottomColor:'#444444', paddingBottom:30, width:'90%', alignSelf:'center'}}>
+      <View style={{borderBottomWidth:1, borderBottomColor:'#444444', paddingBottom:40, paddingTop:25, width:'90%', alignSelf:'center'}}>
         {exercises.length > 0 && <Text style={styles.text}>{(exercises[0].routineName)} Workout</Text>}
         <Text style={styles.spanText}>{formattedDate}</Text>
       </View>
