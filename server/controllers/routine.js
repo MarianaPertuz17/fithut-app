@@ -14,10 +14,9 @@ exports.getRoutine = async (req, res) => {
 exports.postRoutine = async (req, res) => {
   try {
     const { routine, userId } = req.body;
-    console.log('posting routine', routine, userId)
     const newRoutine = await Routine.create({ exercises: routine, userId });
     res.status(201).send({res: newRoutine , error: false});
   } catch (e) {
-    res.status(500).send({res: 'Cound not post User', error: true});
+    res.status(500).send({res: 'Cound not post routine', error: true});
   }
 };
