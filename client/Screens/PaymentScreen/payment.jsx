@@ -1,11 +1,14 @@
-import { CardField, useStripe, useConfirmPayment } from '@stripe/stripe-react-native';
+import { CardField, useConfirmPayment } from '@stripe/stripe-react-native';
 import { useState } from 'react';
-import { Text, ImageBackground, TouchableOpacity, View, TextInput, Alert} from 'react-native';
+import { Text, TouchableOpacity, View, TextInput, Alert, ImageBackground, Image} from 'react-native';
+import { CreditCardInput } from "react-native-credit-card-input";
 import { url } from '../../Config';
 import { styles } from './styles';
+import card from '../../assets/images/mesh-card.jpg'
+import backArrow from '../../assets/images/back-arrow.png';
 
 
-export default function Payment () {
+export default function Payment ({navigation}) {
   const [ email, setEmail ] = useState('');
   const [ name, setName ] = useState('');
   const [ cardDetails, setCardDetails ] = useState();
@@ -37,7 +40,7 @@ export default function Payment () {
       email,
       name
     }
-    // 1. fetch Intent Client Secret from backend
+
     const clientSecret = await fetchPaymentIntentClientSecret();
 
     const {error, paymentIntent} = await confirmPayment(clientSecret, {
@@ -55,9 +58,33 @@ export default function Payment () {
 
 
   return (
-    <View>
-      <View>
-        <Text>Card container</Text>
+    <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
+      <View style={{flexDirection:'row',  marginLeft:'5%',  marginTop:'12%',marginBottom:'10%'}}>
+        <TouchableOpacity onPress={() => navigation.navigate('MyGym')}>
+          <Image source={backArrow} style={styles.backIcon}/>
+        </TouchableOpacity>
+        <View style={{ width:'75%', flexDirection:'row', justifyContent:'center', alignSelf:'center'}}>
+        <Text style={styles.title}>Payment</Text>
+        </View>
+        
+      </View>
+      
+
+      <View style={styles.creditCard}>
+        <ImageBackground source={card} style={{height:'100%', borderRadius:20}} imageStyle={{ borderRadius: 20}} blurRadius={0}>
+          <Text style={styles.titleText}>CREDIT CARD</Text>
+          <CardField
+            postalCodeEnabled={false}
+            placeholder={{
+              number: '4242 4242 4242 4242',
+            }}
+            cardStyle={styles.card}
+            onCardChange={(cardDetails) => {
+              setCardDetails(cardDetails);
+            }}
+            style={styles.cardField}
+          />
+        </ImageBackground>
       </View>
       <View>
         <TextInput
@@ -76,22 +103,11 @@ export default function Payment () {
           onChangeText={(e) => setName(e)}
         />
 
-        <CardField
-          postalCodeEnabled={false}
-          placeholder={{
-            number: '4242 4242 4242 4242',
-          }}
-          cardStyle={styles.card}
-          onCardChange={(cardDetails) => {
-            console.log('cardDetails', cardDetails);
-            setCardDetails(cardDetails);
-          }}
-          style={styles.cardField}
-         />
+        
 
-         <TouchableOpacity onPress={handlePayPress}>
-          <Text style={{color:'blue'}}>Pay</Text>
-         </TouchableOpacity>
+        <TouchableOpacity style={styles.button} onPress={handlePayPress}>
+          <Text style={styles.text}>PAY</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
