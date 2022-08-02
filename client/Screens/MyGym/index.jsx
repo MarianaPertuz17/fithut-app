@@ -1,6 +1,7 @@
-import { StyleSheet, Text, ImageBackground, TouchableOpacity, View } from 'react-native';
+import { Text, ImageBackground, TouchableOpacity, View } from 'react-native';
 import image from '../../assets/images/exerciseScreen_wallpaper.png';
 import { Premium } from '../../Components/Premium';
+import { styles } from './styles';
 
 
 export default function MyGym ({navigation, user, updateEquipment}) {
@@ -18,24 +19,3 @@ export default function MyGym ({navigation, user, updateEquipment}) {
 
   )
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-
-  image: {
-    flex: 1,
-  },
-
-  button: {
-    width:'65%',
-    padding:10,
-    alignItems:'center',
-    marginLeft:'4%',
-    marginBottom:'5%',
-    backgroundColor:'#9A9CE9',
-    borderRadius:20
-  }
-});

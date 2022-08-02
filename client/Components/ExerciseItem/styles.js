@@ -13,14 +13,6 @@ export const styles = StyleSheet.create({
     height:'100%',
   },
 
-  checkMark: {
-    width:30,
-    height:30,
-    position: 'absolute',
-    left:95,
-    top:72
-  },
-
   iconContainer: {
     padding:7,
     backgroundColor: '#171724',

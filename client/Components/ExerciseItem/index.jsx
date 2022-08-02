@@ -2,7 +2,6 @@ import { Text, View, Image, Pressable } from 'react-native';
 import upperIcon from '../../assets/images/biceps-icon.png';
 import lowerIcon from '../../assets/images/leg-icon.png';
 import coreIcon from '../../assets/images/core-icon.png';
-import checkmark from '../../assets/images/check_mark.png';
 import { styles } from './styles';
 
 
@@ -28,7 +27,6 @@ export function ExerciseItem ({navigation, exercise, updateRoutine, doneExercise
         {bodyTarget === 'Lower Body' && <Image source={lowerIcon} style={styles.icon}/>}
         {bodyTarget === 'Core' && <Image source={coreIcon} style={styles.icon}/>}
       </View>
-      <Image source={checkmark} style={styles.checkMark}/>
 
       <View style ={{marginLeft: '2%'}}>
         <Text style={styles.exerciseName}>{formattedName}</Text>

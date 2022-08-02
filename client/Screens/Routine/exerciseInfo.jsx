@@ -181,10 +181,4 @@ const styles = StyleSheet.create({
     marginBottom:20
     },
 
-  progressBar: {
-    width: '10%',
-    backgroundColor: '#AEEEE0',
-    flexDirection:"column"
-  },
-
 });
