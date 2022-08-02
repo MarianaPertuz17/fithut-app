@@ -32,3 +32,13 @@ exports.putEquipment = async (req, res) => {
   }
 };
 
+exports.updateUser = async (req, res) => {
+  try {
+    const { premium } = req.body;
+    const updatedUser = await User.findOneAndUpdate({id : req.params.id}, {$set: {premium: premium}}, {new: true})
+    res.status(201).send({res: premium , error: false});
+  } catch (e) {
+    res.status(500).send({res: 'Cound not update user', error: true});
+  }
+};
+
