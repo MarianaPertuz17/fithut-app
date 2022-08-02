@@ -11,15 +11,24 @@ exports.getKey = (req, res) => {
 
 exports.postPayment = async (req, res) => {
   try {
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: 1099,
-      currency: "usd",
-      payment_method_types: ["card"],
+    const { cardDetails } = req.body;
+    const [expMonth, expYear] = cardDetails.expiry.split('/');
+    const number = cardDetails.number.split(' ').join('');
+    const { cvc } = cardDetails;
+
+    const paymentMethod = await stripe.paymentMethods.create({
+      type: 'card',
+      card: {
+        number,
+        exp_month: parseInt(expMonth, 10),
+        exp_year: parseInt(expYear, 10),
+        cvc,
+      },
     });
 
-    const clientSecret = paymentIntent.client_secret;
-    res.status(200).send({clientSecret: clientSecret, error: false});
+    console.log(paymentMethod, 'ready payment')
+    res.status(200).send({res: 'Payment successful', error: false});
   } catch (e) {
-    res.status(500).send({res: 'Server error', error: true});
+    res.status(500).json({res: 'Server error', error: true});
   }
-}
+};
