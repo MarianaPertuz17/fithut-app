@@ -6,16 +6,13 @@ import { ExerciseList } from '../../Components/ExerciseList';
 export default function TodaysRoutine ({navigation, exerciseList, sendRoutine, route}) {
   
   const [ routine, setRoutine ] = useState([]);
-  //const [ doneExercise, setDoneExercise ] = useState([]);
 
   if (route.params) {
     const { done } = route.params;
   //  setDoneExercise(true);
-    console.log(done, 'el dons')
   }
   
   const updateRoutine = (newRoutine) => {
-    console.log(newRoutine, 'la nueva rutina')
    // setDoneExercise(newRoutine);
     setRoutine(prevRoutine => [ ...prevRoutine, newRoutine]);
   }

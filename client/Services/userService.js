@@ -24,7 +24,6 @@ userService.putEquipment = (id, equipment) => {
 
 
 userService.updateUser = (id, premium) => {
-  console.log('i am me', id, premium)
   const requestOptions = {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
@@ -45,7 +44,6 @@ userService.getExercises = (bodyPart, equipment) => {
 }
 
 userService.getRoutines = (userId) => {
-  console.log(userId, 'id adentro')
   return fetch(`${url}/routines/${userId}`)
           .then(res => res.json())
           .then(data => data)

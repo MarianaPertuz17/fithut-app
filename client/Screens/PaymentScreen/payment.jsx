@@ -50,7 +50,6 @@ export default function Payment ({navigation, updateUser, user}) {
 
     if (error) {
       Alert.alert(`Error code: ${error.code}`, error.message);
-      console.log('Payment confirmation error', error.message);
     } else if (paymentIntent) {
       updateUser(user._id);
       Alert.alert('Success', 'Payment successful', [

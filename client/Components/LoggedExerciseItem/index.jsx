@@ -7,8 +7,6 @@ import { styles } from './styles';
 
 
 export function LoggedExerciseItem ({navigation, exercise}) {
-
-  console.log(exercise, 'solo exe')
   
   const {exerciseName, setsCompleted, realSets, repsPerSet, routineName} = exercise;
   return(
