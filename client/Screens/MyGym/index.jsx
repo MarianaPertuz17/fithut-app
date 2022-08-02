@@ -4,7 +4,7 @@ import { Premium } from '../../Components/Premium';
 
 
 export default function MyGym ({navigation, user, updateEquipment}) {
-
+  console.log(user, 'eleeee')
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>
@@ -13,7 +13,7 @@ export default function MyGym ({navigation, user, updateEquipment}) {
           <Text style={{color:'white', fontFamily: 'Epilogue-Light', fontSize: 15,}}>Change available equipment</Text>
         </TouchableOpacity>
         <Text style={{color:'gray', marginLeft:'5%'}}>If you want to start training, go right away to Routine.</Text>   
-        <Premium/> 
+        {!user.premium && <Premium navigation={navigation}/>}
       </ImageBackground>   
     </View>
 

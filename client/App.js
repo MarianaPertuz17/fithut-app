@@ -10,6 +10,10 @@ import { userService } from './Services/userService';
 import { ExerciseInfo } from './Screens/Routine/exerciseInfo';
 import LogExerciseDetail from './Screens/LogExerciseDetail/exerciseDetail';
 import Equipment from './Screens/MyGym/equipment';
+import { StripeProvider } from '@stripe/stripe-react-native';
+import { fetchKeyService } from './Services/fetchKeyService';
+import Payment from './Screens/PaymentScreen/payment';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +24,7 @@ export default function App() {
   const [ exerciseList, setExerciseList ] = useState([]);
   const [ userEquipment, setUserEquipment ] = useState([]);
   const [ routinesList, setRoutinesList ] = useState([]);
+  const [ publishableKey, setPublishableKey ] = useState('');
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -29,6 +34,14 @@ export default function App() {
     }
 
     fetchUserInfo();
+
+    const initialize = async () => {
+      const {res, error} = await fetchKeyService.getKey();
+      if (!error) setPublishableKey(res);      
+      else alert(res);
+    }
+
+    initialize();
   }, []);
 
 
@@ -61,62 +74,23 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-        {exerciseList && <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList} sendRoutine={sendRoutine}/>}</Stack.Screen>}
-        <Stack.Screen name="ExerciseInfo">{(props) => <ExerciseInfo {...props} exerciseList={exerciseList}/>}</Stack.Screen>
-        <Stack.Screen name="LogExerciseInfo">{(props) => <LogExerciseDetail {...props}/>}</Stack.Screen>
-        <Stack.Screen name="Equipment">{(props) => <Equipment {...props}/>}</Stack.Screen>
-        <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment} routines={routinesList} findUserRoutines={findUserRoutines}/>}</Stack.Screen>
-      </Stack.Navigator>
-
-    </NavigationContainer>
+    <StripeProvider
+      publishableKey={publishableKey}
+      merchantIdentifier="merchant.com.stripe.react.native"
+    >
+      <NavigationContainer>
+        <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="Register" component={Register} />
+          {exerciseList && <Stack.Screen name="TodaysRoutine">{(props) => <TodaysRoutine {...props} exerciseList={exerciseList} sendRoutine={sendRoutine}/>}</Stack.Screen>}
+          <Stack.Screen name="ExerciseInfo">{(props) => <ExerciseInfo {...props} exerciseList={exerciseList}/>}</Stack.Screen>
+          <Stack.Screen name="LogExerciseInfo">{(props) => <LogExerciseDetail {...props}/>}</Stack.Screen>
+          <Stack.Screen name="Equipment">{(props) => <Equipment {...props}/>}</Stack.Screen>
+          <Stack.Screen name="Payment" component={Payment} />
+          <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment} routines={routinesList} findUserRoutines={findUserRoutines}/>}</Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </StripeProvider>
   );
 }
-
-/*
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from "./Screens/HomePage/home";
-import Login from './Screens/Login/login';
-import Register from './Screens/Register/register'
-import MyGym from './Screens/MyGym/myGym'
-import Routine from './Screens/Routine/routine';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const Stack = createNativeStackNavigator();
-
-const Tab = createBottomTabNavigator();
-
-function TabNavigator() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={HomeScreen} />
-    </Tab.Navigator>
-  );
-}
-
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home' screenOptions={{headerShown: false}}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Register" component={Register} />
-        <Stack.Screen name="MyGym" component={MyGym} />
-        <Stack.Screen name="Routine" component={Routine} />
-
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-
-    </NavigationContainer>
-  );
-}
-*/

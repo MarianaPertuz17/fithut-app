@@ -1,6 +1,6 @@
-export const userService = {};
+import { url } from "../Config";
 
-const url = 'http://192.168.1.17:5002';
+export const userService = {};
 
 userService.getUser = () => {
   return fetch(`${url}/users`)
