@@ -5,6 +5,4 @@ userRouter.put('/:id/equipment', putEquipment);
 userRouter.get('/', getUser);
 userRouter.post('/', postUser);
 
-
-
 exports.userRouter = userRouter;

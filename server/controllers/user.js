@@ -31,3 +31,4 @@ exports.putEquipment = async (req, res) => {
     res.status(500).send({res: 'Cound not update equipment for user', error: true});
   }
 };
+

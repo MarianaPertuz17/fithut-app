@@ -23,7 +23,6 @@ exports.updateExercise = async (req, res) => {
 
     res.status(201).send({res: 'great' , error: false});
   } catch (e) {
-    console.log(e, 'errror')
     res.status(500).send({res: 'Cound not post Exercise', error: true});
   }
 
