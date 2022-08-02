@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable } from 'react-native';
+import { Text, View, Image } from 'react-native';
 import upperIcon from '../../assets/images/biceps-icon.png';
 import lowerIcon from '../../assets/images/leg-icon.png';
 import coreIcon from '../../assets/images/core-icon.png';
@@ -6,7 +6,7 @@ import checkmark from '../../assets/images/check_mark.png';
 import { styles } from './styles';
 
 
-export function LoggedExerciseItem ({navigation, exercise}) {
+export function LoggedExerciseItem ({exercise}) {
   
   const {exerciseName, setsCompleted, realSets, repsPerSet, routineName} = exercise;
   return(

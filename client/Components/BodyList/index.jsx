@@ -1,4 +1,4 @@
-import { Text, View, Image, Pressable} from 'react-native';
+import { Text, Image, Pressable} from 'react-native';
 import { styles } from './styles';
 
 export function BodyList ({bodyPart, onTap}) {

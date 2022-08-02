@@ -13,7 +13,7 @@ routineService.postRoutine = (routine, userId) => {
   const requestOptions = {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({routine, userId}) //enviar routine
+    body: JSON.stringify({routine, userId})
   }; 
 
   return fetch(`${url}/routines`, requestOptions)

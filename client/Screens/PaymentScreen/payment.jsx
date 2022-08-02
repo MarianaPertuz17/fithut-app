@@ -1,4 +1,3 @@
-import { CardField, useConfirmPayment } from '@stripe/stripe-react-native';
 import { useState } from 'react';
 import { Text, TouchableOpacity, View, TextInput, Alert, Image, ScrollView} from 'react-native';
 import { CreditCardInput } from "react-native-credit-card-input";

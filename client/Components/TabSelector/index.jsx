@@ -1,5 +1,5 @@
 import { styles } from "./styles";
-import { Text, TouchableOpacity, View, ScrollView} from 'react-native';
+import { View, ScrollView} from 'react-native';
 import { Tab } from "../Tab";
 
 export function TabSelector ({ tabs, onTabPress }) {

@@ -1,5 +1,5 @@
 import { styles } from "./styles";
-import { Text, Pressable, View } from 'react-native';
+import { Text, Pressable } from 'react-native';
 
 export function Tab ({ text, selected, onTabPress }) {
   const selectedStyle = {

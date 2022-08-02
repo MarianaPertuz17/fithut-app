@@ -1,4 +1,4 @@
-import { StyleSheet, View, TouchableOpacity, Image, Alert, Text } from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Image, Text } from 'react-native';
 import backArrow from '../../assets/images/back-arrow.png';
 import { ExerciseList } from '../../Components/ExerciseList';
 

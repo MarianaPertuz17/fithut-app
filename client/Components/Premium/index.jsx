@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity, Linking } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 import star from '../../assets/images/star.png';
 

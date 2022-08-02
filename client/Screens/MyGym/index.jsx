@@ -1,4 +1,4 @@
-import { StyleSheet, Text, ImageBackground, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Text, ImageBackground, TouchableOpacity, View } from 'react-native';
 import image from '../../assets/images/exerciseScreen_wallpaper.png';
 import { Premium } from '../../Components/Premium';
 

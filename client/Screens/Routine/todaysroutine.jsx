@@ -3,23 +3,17 @@ import { StyleSheet, View, TouchableOpacity, Image, Alert, Text } from 'react-na
 import backArrow from '../../assets/images/back-arrow.png';
 import { ExerciseList } from '../../Components/ExerciseList';
 
-export default function TodaysRoutine ({navigation, exerciseList, sendRoutine, route}) {
+export default function TodaysRoutine ({navigation, exerciseList, sendRoutine}) {
   
   const [ routine, setRoutine ] = useState([]);
 
-  if (route.params) {
-    const { done } = route.params;
-  //  setDoneExercise(true);
-  }
-  
   const updateRoutine = (newRoutine) => {
-   // setDoneExercise(newRoutine);
     setRoutine(prevRoutine => [ ...prevRoutine, newRoutine]);
   }
 
   const handleSend = () => {
-    if (routine.length > 0)  sendRoutine(routine)
-    navigation.navigate('Routine')
+    if (routine.length > 0)  sendRoutine(routine);
+    navigation.navigate('Routine');
   }
 
   const handleBack = () => {

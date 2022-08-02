@@ -8,9 +8,8 @@ import calendarNoColor from '../assets/images/calendar-nocolor.png';
 import MyGym from '../Screens/MyGym/index.jsx'
 import Routine from '../Screens/Routine/routine';
 import History from '../Screens/History/history';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-
 const Tab = createBottomTabNavigator();
 
 export const TabNavigator = ({user, updateEquipment, findExercises, userEquipment, routines, findUserRoutines}) => {

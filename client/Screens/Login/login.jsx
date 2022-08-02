@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, Image, TextInput } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, TouchableOpacity, TextInput } from 'react-native';
 import image from '../../assets/images/3d_wallpaper.png';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
