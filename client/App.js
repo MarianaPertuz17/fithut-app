@@ -11,7 +11,7 @@ import { ExerciseInfo } from './Screens/Routine/exerciseInfo';
 import LogExerciseDetail from './Screens/LogExerciseDetail/exerciseDetail';
 import Equipment from './Screens/MyGym/equipment';
 import { StripeProvider } from '@stripe/stripe-react-native';
-import { fetchKeyService } from './Services/fetchKeyService';
+import { paymentService } from './Services/paymentService';
 import Payment from './Screens/PaymentScreen/payment';
 
 
@@ -31,13 +31,13 @@ export default function App() {
     if (!error) setUserInfo(res);
     else alert(res);
   }
-  
+
   useEffect(() => {
 
     fetchUserInfo();
 
     const initialize = async () => {
-      const {res, error} = await fetchKeyService.getKey();
+      const {res, error} = await paymentService.getKey();
       if (!error) setPublishableKey(res);      
       else alert(res);
     }

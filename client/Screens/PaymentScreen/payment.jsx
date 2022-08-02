@@ -4,61 +4,48 @@ import { Text, TouchableOpacity, View, TextInput, Alert, ImageBackground, Image}
 import { CreditCardInput } from "react-native-credit-card-input";
 import { url } from '../../Config';
 import { styles } from './styles';
-import card from '../../assets/images/mesh-card.jpg'
+import card from '../../assets/images/card-front.png'
+import backCard from '../../assets/images/card-back.png'
 import backArrow from '../../assets/images/back-arrow.png';
+import { paymentService } from '../../Services/paymentService';
 
 
 export default function Payment ({navigation, updateUser, user}) {
   const [ email, setEmail ] = useState('');
   const [ name, setName ] = useState('');
-  const [ cardDetails, setCardDetails ] = useState();
-  const { confirmPayment, loading } = useConfirmPayment();
+  const [ cardDetails, setCardDetails ] = useState({});
 
-  const fetchPaymentIntentClientSecret = async () => {
-    const response = await fetch(`${url}/stripe/create-payment-intent`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        paymentMethodType: 'card',
-        currency: 'usd',
-      }),
-    });
-    const {clientSecret} = await response.json();
-
-    return clientSecret;
-  };
+  const [inputsAreValid, setInputsAreValid] = useState(false);
 
   const handlePayPress = async () => {
-    if (!cardDetails?.complete || !email) {
-      Alert.alert('Missing fields');
-      return;
-    }
-
-    const billingDetails = {
-      email,
-      name
-    }
-
-    const clientSecret = await fetchPaymentIntentClientSecret();
-
-    const {error, paymentIntent} = await confirmPayment(clientSecret, {
-      type: 'Card',
-      billingDetails,
-    });
-
-    if (error) {
-      Alert.alert(`Error code: ${error.code}`, error.message);
-    } else if (paymentIntent) {
+    const {res, error} = await paymentService.payPremium(
+      cardDetails,
+    );
+    console.log(res, 'respuesta payment')
+    if (!error) {
       updateUser(user._id);
       Alert.alert('Success', 'Payment successful', [
         { text: 'OK', onPress: () => {
           navigation.navigate('MyGym');
         }},
       ]);
+    } else {
+      Alert.alert(`Error: ${res}`);
     }
   };
+
+
+  const handleCreditCardChange = (v) => {
+    console.log(v, 'ajaaaaa')
+    const {cvc, expiry, number, type} = v.values;
+    setCardDetails({cvc, expiry, number, type});
+    if (v.valid) {
+      setInputsAreValid(true);
+    } else {
+      setInputsAreValid(false);
+    }
+  };
+
 
 
   return (
@@ -72,24 +59,16 @@ export default function Payment ({navigation, updateUser, user}) {
         </View>
         
       </View>
-      
 
-      <View style={styles.creditCard}>
-        <ImageBackground source={card} style={{height:'100%', borderRadius:20}} imageStyle={{ borderRadius: 20}} blurRadius={0}>
-          <Text style={styles.titleText}>TYPE CREDIT CARD HERE</Text>
-          <CardField
-            postalCodeEnabled={false}
-            placeholder={{
-              number: '4242 4242 4242 4242',
-            }}
-            cardStyle={styles.card}
-            onCardChange={(cardDetails) => {
-              setCardDetails(cardDetails);
-            }}
-            style={styles.cardField}
-          />
-        </ImageBackground>
+      <View style={{marginBottom:20, alignItems:'center'}}>  
+        <Text style={styles.payText}>You're about to pay:</Text>
+        <Text style={styles.priceTag}>10.00 USD</Text>
       </View>
+
+      <View style={{ width:'95%', alignSelf:'center', marginBottom:20}}>
+        <CreditCardInput onChange={handleCreditCardChange} inputStyle={{backgroundColor:'white', borderRadius:10, marginRight:25}} labelStyle={{color:'gray'}} cardImageFront={card} cardImageBack={backCard} inputContainerStyle={{marginLeft:15}}/>
+      </View>
+      
       <View>
         <TextInput
           id="email"
@@ -106,8 +85,6 @@ export default function Payment ({navigation, updateUser, user}) {
           style={styles.textInput}
           onChangeText={(e) => setName(e)}
         />
-
-        
 
         <TouchableOpacity style={styles.button} onPress={handlePayPress}>
           <Text style={styles.text}>PAY</Text>

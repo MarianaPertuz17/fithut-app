@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   textInput: {
-    height:50,
+    height:40,
     width:'90%',
     backgroundColor:'white',
     alignSelf:'center',
@@ -77,4 +77,15 @@ export const styles = StyleSheet.create({
     width: 35,
     height: 35,
   },
+
+  payText: {
+    color:'gray',
+    fontSize:14,
+  },
+
+  priceTag: {
+    color:'white',
+    fontSize:25,
+    fontWeight:'bold'
+  }
 })
