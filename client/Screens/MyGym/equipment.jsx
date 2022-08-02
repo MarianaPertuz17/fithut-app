@@ -182,11 +182,11 @@ export default function Equipment ({route, navigation}) {
   const handleSave = () => {
     if (availableEquipment.length > 0) {
       updateEquipment('62de1ccafceacff8700e6722',availableEquipment);
-      // Alert.alert('Saved!', `The new equipment has been added to your gym`);
       navigation.navigate('MyGym');
     } else {
-      Alert.alert('Saved!', `Now you have no equipment in your gym`);
-      navigation.navigate('MyGym');
+      Alert.alert('Saved!', `Now you have no equipment in your gym`, [
+        { text: 'OK', onPress: () => navigation.navigate('MyGym') },
+      ]);
     }
     
     

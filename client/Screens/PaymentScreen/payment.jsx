@@ -1,8 +1,7 @@
 import { CardField, useConfirmPayment } from '@stripe/stripe-react-native';
 import { useState } from 'react';
-import { Text, TouchableOpacity, View, TextInput, Alert, ImageBackground, Image} from 'react-native';
+import { Text, TouchableOpacity, View, TextInput, Alert, Image, ScrollView} from 'react-native';
 import { CreditCardInput } from "react-native-credit-card-input";
-import { url } from '../../Config';
 import { styles } from './styles';
 import card from '../../assets/images/card-front.png'
 import backCard from '../../assets/images/card-back.png'
@@ -14,8 +13,6 @@ export default function Payment ({navigation, updateUser, user}) {
   const [ email, setEmail ] = useState('');
   const [ name, setName ] = useState('');
   const [ cardDetails, setCardDetails ] = useState({});
-
-  const [inputsAreValid, setInputsAreValid] = useState(false);
 
   const handlePayPress = async () => {
     const {res, error} = await paymentService.payPremium(
@@ -39,17 +36,12 @@ export default function Payment ({navigation, updateUser, user}) {
     console.log(v, 'ajaaaaa')
     const {cvc, expiry, number, type} = v.values;
     setCardDetails({cvc, expiry, number, type});
-    if (v.valid) {
-      setInputsAreValid(true);
-    } else {
-      setInputsAreValid(false);
-    }
   };
 
 
 
   return (
-    <View style={{backgroundColor:'#171724', height:'100%', flexDirection:'column'}}>
+    <ScrollView style={{backgroundColor:'#171724', height:'100%', flexDirection:'column'}}>
       <View style={{flexDirection:'row',  marginLeft:'5%',  marginTop:'12%',marginBottom:'10%'}}>
         <TouchableOpacity onPress={() => navigation.navigate('MyGym')}>
           <Image source={backArrow} style={styles.backIcon}/>
@@ -90,6 +82,6 @@ export default function Payment ({navigation, updateUser, user}) {
           <Text style={styles.text}>PAY</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }

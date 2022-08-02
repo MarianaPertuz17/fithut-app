@@ -36,29 +36,3 @@ userService.updateUser = (id, premium) => {
           .catch(e => e);
 }
 
-userService.getExercises = (bodyPart, equipment) => {
-  return fetch(`${url}/exercises/${bodyPart}`)
-          .then(res => res.json())
-          .then(data => data)
-          .catch(e => e);
-}
-
-userService.getRoutines = (userId) => {
-  return fetch(`${url}/routines/${userId}`)
-          .then(res => res.json())
-          .then(data => data)
-          .catch(e => e);
-}
-
-userService.postRoutine = (routine, userId) => {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({routine, userId}) //enviar routine
-  }; 
-
-  return fetch(`${url}/routines`, requestOptions)
-          .then(res => res.json())
-          .then(data => data)
-          .catch(e => e);
-}

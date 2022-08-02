@@ -14,7 +14,7 @@ export function ExerciseInfo ({navigation, route}) {
   }
 
   const handleBack = () => {
-    Alert.alert('', `You are not done with the exercises yet. Are you sure you want to finish this workout?`, [
+    Alert.alert('', `Are you sure you want to finish this workout?`, [
       {
         text: 'NO',
       },
