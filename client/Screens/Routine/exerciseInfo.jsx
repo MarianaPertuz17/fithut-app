@@ -25,7 +25,8 @@ export function ExerciseInfo ({navigation, route}) {
             setsCompleted: counter+1,
             realSets: sets,
             repsPerSet: reps,
-            routineName: bodyTarget
+            routineName: bodyTarget,
+            calories: Math.round(Math.random()*200)+100
           }
         ) 
       }},
@@ -89,7 +90,8 @@ export function ExerciseInfo ({navigation, route}) {
                 setsCompleted: counter+1,
                 realSets: sets,
                 repsPerSet: reps,
-                routineName: bodyTarget
+                routineName: bodyTarget,
+                calories: Math.round(Math.random()*200)+100
               })}} style={styles.buttonFinish}>
             <Text style={{ fontWeight:'bold', color:'white', fontSize:20, fontStyle:'italic'}}>Done</Text>
           </TouchableOpacity>

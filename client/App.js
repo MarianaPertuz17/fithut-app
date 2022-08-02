@@ -26,12 +26,13 @@ export default function App() {
   const [ routinesList, setRoutinesList ] = useState([]);
   const [ publishableKey, setPublishableKey ] = useState('');
 
+  const fetchUserInfo = async () => {
+    const {res, error} = await userService.getUser();
+    if (!error) setUserInfo(res);
+    else alert(res);
+  }
+  
   useEffect(() => {
-    const fetchUserInfo = async () => {
-      const {res, error} = await userService.getUser();
-      if (!error) setUserInfo(res);
-      else alert(res);
-    }
 
     fetchUserInfo();
 
@@ -73,6 +74,11 @@ export default function App() {
     findUserRoutines();
   }
 
+  const updateUser = async (id) => {
+    await userService.updateUser(id, true);
+    fetchUserInfo();
+  }
+
   return (
     <StripeProvider
       publishableKey={publishableKey}
@@ -87,7 +93,7 @@ export default function App() {
           <Stack.Screen name="ExerciseInfo">{(props) => <ExerciseInfo {...props} exerciseList={exerciseList}/>}</Stack.Screen>
           <Stack.Screen name="LogExerciseInfo">{(props) => <LogExerciseDetail {...props}/>}</Stack.Screen>
           <Stack.Screen name="Equipment">{(props) => <Equipment {...props}/>}</Stack.Screen>
-          <Stack.Screen name="Payment" component={Payment} />
+          <Stack.Screen name="Payment">{(props) => <Payment {...props} updateUser={updateUser} user={userInfo}/>}</Stack.Screen>
           <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment} routines={routinesList} findUserRoutines={findUserRoutines}/>}</Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

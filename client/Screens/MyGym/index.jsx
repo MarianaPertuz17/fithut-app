@@ -4,7 +4,6 @@ import { Premium } from '../../Components/Premium';
 
 
 export default function MyGym ({navigation, user, updateEquipment}) {
-  console.log(user, 'eleeee')
   return (
     <View style={styles.container}>
       <ImageBackground source={image} resizeMode="cover" style={styles.image}>

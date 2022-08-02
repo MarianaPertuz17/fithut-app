@@ -7,6 +7,13 @@ export function RoutineItem ({routine, navigation}) {
   const { exercises, createdAt } = routine;
   const formattedDate = moment(createdAt).format('Do MMMM, YYYY');
 
+  const caloriesArray = exercises.map(ele => ele.calories);
+  const acc = 0;
+  const totalCalories = caloriesArray.reduce(
+    (prevValue, currentValue) => prevValue + currentValue,
+    acc
+  );
+
   return(
     <View>
       <View style={{flexDirection:'row', marginLeft:'5%',marginBottom:'2%', justifyItems:'center'}}>  
@@ -27,7 +34,7 @@ export function RoutineItem ({routine, navigation}) {
           <View style={styles.line}></View>
           <View>
             <Text style={styles.extraInfoText}>CALORIES</Text>
-            <Text style={{...styles.extraInfoText, fontWeight:'bold',color:'white'}}>{exercises.length}</Text>
+            <Text style={{...styles.extraInfoText, fontWeight:'bold',color:'white'}}>{totalCalories} cal</Text>
           </View>
         </View>
       </Pressable>}

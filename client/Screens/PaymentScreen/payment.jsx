@@ -8,7 +8,7 @@ import card from '../../assets/images/mesh-card.jpg'
 import backArrow from '../../assets/images/back-arrow.png';
 
 
-export default function Payment ({navigation}) {
+export default function Payment ({navigation, updateUser, user}) {
   const [ email, setEmail ] = useState('');
   const [ name, setName ] = useState('');
   const [ cardDetails, setCardDetails ] = useState();
@@ -52,13 +52,18 @@ export default function Payment ({navigation}) {
       Alert.alert(`Error code: ${error.code}`, error.message);
       console.log('Payment confirmation error', error.message);
     } else if (paymentIntent) {
-      Alert.alert('Success', 'Payment successful');
+      updateUser(user._id);
+      Alert.alert('Success', 'Payment successful', [
+        { text: 'OK', onPress: () => {
+          navigation.navigate('MyGym');
+        }},
+      ]);
     }
   };
 
 
   return (
-    <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
+    <View style={{backgroundColor:'#171724', height:'100%', flexDirection:'column'}}>
       <View style={{flexDirection:'row',  marginLeft:'5%',  marginTop:'12%',marginBottom:'10%'}}>
         <TouchableOpacity onPress={() => navigation.navigate('MyGym')}>
           <Image source={backArrow} style={styles.backIcon}/>
@@ -72,7 +77,7 @@ export default function Payment ({navigation}) {
 
       <View style={styles.creditCard}>
         <ImageBackground source={card} style={{height:'100%', borderRadius:20}} imageStyle={{ borderRadius: 20}} blurRadius={0}>
-          <Text style={styles.titleText}>CREDIT CARD</Text>
+          <Text style={styles.titleText}>TYPE CREDIT CARD HERE</Text>
           <CardField
             postalCodeEnabled={false}
             placeholder={{
