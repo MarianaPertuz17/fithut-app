@@ -45,17 +45,8 @@ export function ExerciseInfo ({navigation, route}) {
   
   return(
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
-        {/* <Image source={{
-          uri: gifUrl,
-          method: 'GET',
-          headers: {
-            'X-RapidAPI-Key': '68a64c3a53mshfc50b2d0cf73e8ep1ca3d2jsnc62ca1751986',
-            'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
-          },
-        }} style={{width:300, height:300}}/> */}
+        
       <ScrollView>
-
-      
         <View style={styles.headerContainer}>
           <TouchableOpacity onPress={handleBack}>
             <Image source={backArrow} style={styles.backIcon}/>
@@ -63,7 +54,14 @@ export function ExerciseInfo ({navigation, route}) {
           <Text style={styles.exerciseName}>{formattedName}</Text>
         </View>
         
-        <Image style={{width:300, height:300, flexDirection: 'column', alignSelf:'center'}} source={require('./homer.gif')}/>
+        <Image source={{
+          uri: gifUrl,
+          method: 'GET',
+          headers: {
+            'X-RapidAPI-Key': '68a64c3a53mshfc50b2d0cf73e8ep1ca3d2jsnc62ca1751986',
+            'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
+          },
+        }} style={{width:300, height:300}}/>
         <Text style={styles.spanText}>{sets} SETS</Text>
         
         {[...Array(sets)].map((ele, index) => {
