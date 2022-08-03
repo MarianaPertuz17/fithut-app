@@ -28,25 +28,16 @@ export default function App() {
   const [ exerciseList, setExerciseList ] = useState([]);
   const [ userEquipment, setUserEquipment ] = useState([]);
   const [ routinesList, setRoutinesList ] = useState([]);
-  const [ publishableKey, setPublishableKey ] = useState('');
 
   const fetchUserInfo = async () => {
     const {res, error} = await userService.getUser();
     if (!error) setUserInfo(res);
     else alert(res);
+    return res;
   }
 
   useEffect(() => {
-
     fetchUserInfo();
-
-    const initialize = async () => {
-      const {res, error} = await paymentService.getKey();
-      if (!error) setPublishableKey(res);      
-      else alert(res);
-    }
-
-    initialize();
   }, []);
 
 
@@ -58,6 +49,7 @@ export default function App() {
   const updateEquipment = async (id, equipment) => {
     const {res, error} = await userService.putEquipment(id, equipment);
     if (!error) setUserEquipment(res);
+    fetchUserInfo();
   }
 
   const findExercises = async (bodyPart, equipment) => {
@@ -92,7 +84,7 @@ export default function App() {
         {exerciseList && <Stack.Screen name='TodaysRoutine'>{(props) => <TodaysRoutine {...props} exerciseList={exerciseList} sendRoutine={sendRoutine}/>}</Stack.Screen>}
         <Stack.Screen name='ExerciseInfo'>{(props) => <ExerciseInfo {...props} exerciseList={exerciseList}/>}</Stack.Screen>
         <Stack.Screen name='LogExerciseInfo'>{(props) => <LogExerciseDetail {...props}/>}</Stack.Screen>
-        <Stack.Screen name='Equipment'>{(props) => <Equipment {...props}/>}</Stack.Screen>
+        <Stack.Screen name='Equipment'>{(props) => <Equipment {...props} user={userInfo} fetchUserInfo={fetchUserInfo} userEquipment={userEquipment}/>}</Stack.Screen>
         <Stack.Screen name='Payment'>{(props) => <Payment {...props} updateUser={updateUser} user={userInfo}/>}</Stack.Screen>
         <Stack.Screen name='Main'>{(props) => <TabNavigator {...props} user={userInfo} updateEquipment={updateEquipment} findExercises={findExercises} userEquipment={userEquipment} routines={routinesList} findUserRoutines={findUserRoutines}/>}</Stack.Screen>
       </Stack.Navigator>

@@ -5,7 +5,7 @@ import coreIcon from '../../assets/images/core-icon.png';
 import { styles } from './styles';
 
 
-export function ExerciseItem ({navigation, exercise, updateRoutine, doneExercise}) {
+export function ExerciseItem ({navigation, exercise, updateRoutine}) {
 
   const { name, target, gifUrl, bodyTarget, equipment, sets, reps } = exercise;
   const formattedName = name.slice(0,1).toUpperCase() + name.slice(1);
