@@ -45,7 +45,7 @@ export function ExerciseInfo ({navigation, route}) {
   
   return(
     <View style={{backgroundColor:'black', height:'100%', flexDirection:'column'}}>
-        
+       
       <ScrollView>
         <View style={styles.headerContainer}>
           <TouchableOpacity onPress={handleBack}>
@@ -61,7 +61,8 @@ export function ExerciseInfo ({navigation, route}) {
             'X-RapidAPI-Key': '68a64c3a53mshfc50b2d0cf73e8ep1ca3d2jsnc62ca1751986',
             'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com'
           },
-        }} style={{width:300, height:300}}/>
+        }} style={{width:300, height:300, flexDirection: 'column', alignSelf:'center'}}/>
+        
         <Text style={styles.spanText}>{sets} SETS</Text>
         
         {[...Array(sets)].map((ele, index) => {
