@@ -84,6 +84,7 @@ IMPORTANT: The list of exercises is private, in order to access it, contact the 
 - [Express](https://cloud.google.com/)
 - [MongoDB](https://www.mongodb.com/) + [Mongoose](https://mongoosejs.com/)
 - [Stripe](https://expressjs.com/)
+- [Figma](https://www.figma.com/)
 
 
 ## Developer
