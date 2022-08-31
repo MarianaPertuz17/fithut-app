@@ -1,7 +1,7 @@
 # FitHut
 
 <p align="center">
-  <img src="/client/assets/icon.png" width="400">
+  <img src="/client/assets/icon.png" width="200">
 </p>
 
 Fithut is a mobile app that works as a personal gym. In this app, users can choose the equipments they own from a list and pick the part of the body they want to exercise that that or let the app choose for them using the 'Randomize' option.
@@ -12,27 +12,27 @@ An unique routine is created taking into account the equipment the user owns and
 ## Screenshots
 
 <p align="center">
-  <img src="/client/assets/images/main_readme.jpeg">
+  <img src="/client/assets/images/main_readme.jpeg" width="30%">
 </p>
 
 <p align="center">
-  <img src="/client/assets/images/landing_readme.jpeg">
-  <img src="/client/assets/images/equipment_readme.jpeg">
+  <img src="/client/assets/images/landing_readme.jpeg" width="30%">
+  <img src="/client/assets/images/equipment_readme.jpeg" width="30%">
 </p>
 
 <p align="center">
-  <img src="/client/assets/images/routine_readme.jpeg" width="32%">
-  <img src="/client/assets/images/exercises_readme.jpeg" width="32%">
-  <img src="/client/assets/images/exerciseDetail_readme.jpeg" width="32%">
+  <img src="/client/assets/images/routine_readme.jpeg" width="30%">
+  <img src="/client/assets/images/exercises_readme.jpeg" width="30%">
+  <img src="/client/assets/images/exerciseDetail_readme.jpeg" width="30%">
 </p>
 
 <p align="center">
-  <img src="/public/assets/images/history_readme.jpeg">
-  <img src="/public/assets/images/historyDetail_readme.jpeg">
+  <img src="/client/assets/images/history_readme.jpeg" width="30%">
+  <img src="/client/assets/images/historyDetail_readme.jpeg" width="30%">
 </p>
 
 <p align="center">
-  <img src="/public/assets/images/pay_readme.jpeg">
+  <img src="/client/assets/images/pay_readme.jpeg" width="30%">
 </p>
 
 
