@@ -4,9 +4,9 @@
   <img src="/client/assets/icon.png" width="200">
 </p>
 
-Fithut is a mobile app that works as a personal gym. In this app, users can choose the equipments they own from a list and pick the part of the body they want to exercise that that or let the app choose for them using the 'Randomize' option.
+Fithut is a mobile app that works as a personal gym. In this app, users can choose the equipments they own from a list and pick the part of the body they want to exercise or let the app choose for them using the 'Randomize' option.
 
-An unique routine is created taking into account the equipment the user owns and the part of the body the cose to exercise. There is a screen in which the users can see their log history that shows the exercises they made.
+An unique routine is created taking into account the equipment the user owns and the part of the body the chose to exercise. There is a screen in which the users can see their log history that shows the exercises they made.
 
 
 ## Screenshots
