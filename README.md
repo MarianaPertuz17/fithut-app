@@ -21,9 +21,9 @@ An unique routine is created taking into account the equipment the user owns and
 </p>
 
 <p align="center">
-  <img src="/client/assets/images/routine_readme.jpeg">
-  <img src="/client/assets/images/exercises_readme.jpeg">
-  <img src="/client/assets/images/exerciseDetail_readme.jpeg">
+  <img src="/client/assets/images/routine_readme.jpeg" width="32%">
+  <img src="/client/assets/images/exercises_readme.jpeg" width="32%">
+  <img src="/client/assets/images/exerciseDetail_readme.jpeg" width="32%">
 </p>
 
 <p align="center">
